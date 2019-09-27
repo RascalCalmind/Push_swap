@@ -6,7 +6,7 @@
 #    By: lhageman <lhageman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/26 17:41:45 by lhageman       #+#    #+#                 #
-#    Updated: 2019/09/27 14:08:18 by lhageman      ########   odam.nl          #
+#    Updated: 2019/09/27 19:28:41 by lhageman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,13 @@ NAMES = $(NAMEC) $(NAMEPS)
 
 CC 		= gcc -Wall -Werror -Wextra -o
 
-SRCC	=	ft_checker.c ft_valid_input.c	
+SRCC	=	ft_checker.c \
+			ft_valid_input.c \
+			ft_store_input.c \
+			libft/ft_atoi.c \
+			ft_print_int_array.c \
+			ft_read_input.c
+
 SRCPS	=	ft_push_swap.c
 
 OBJC	= $(SRCC:%.c=%.o)

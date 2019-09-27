@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 14:04:11 by lhageman       #+#    #+#                */
-/*   Updated: 2019/09/27 14:33:56 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/09/27 18:49:53 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ int		ft_valid_input(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (ft_is_asciinum(str[i]) == 0 || str[i] == '-')
+		if (ft_is_asciinum(str[i]) == 0 || str[i] == '-' || str[i] == '+')
 		{
-			if (str[i] == '-' && i > 0)
+			if ((str[i] == '-' || str[i] == '+') && i > 0)
 				return (-1);
 			i++;
 		}
 		else
 			return (-1);
 	}
-	if (i == 1 && str[0] == '-')
+	if (i == 1 && (str[0] == '-' || str[0] == '+'))
 		return (-1);
 	return (0);
 }

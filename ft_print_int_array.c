@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_checker.c                                       :+:    :+:            */
+/*   ft_print_int_array.c                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/26 17:41:33 by lhageman       #+#    #+#                */
-/*   Updated: 2019/09/27 18:54:42 by lhageman      ########   odam.nl         */
+/*   Created: 2019/09/27 17:14:36 by lhageman       #+#    #+#                */
+/*   Updated: 2019/09/27 17:21:40 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker.h"
-#include <stdio.h>
 
-int		main(int argc, char **argv)
+void		ft_print_int_array(int *array, int len)
 {
-	int ret;
+	int i;
 
-	if (argc > 1)
+	i = 0;
+	while (i < len)
 	{
-		ret = ft_check_input(argv);
-		if (ret == -1)
-			return (-1);
-		ft_store_input(argv);
-		ft_read_input();
+		printf("%i\n", array[i]);
+		i++;
 	}
-	return (0);
+	printf("\n-\na\n");
 }
