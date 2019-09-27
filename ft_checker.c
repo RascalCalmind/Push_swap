@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:33 by lhageman       #+#    #+#                */
-/*   Updated: 2019/09/26 19:40:58 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/09/27 14:21:56 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 int		main(int argc, char **argv)
 {
+	int i;
+
+	i = 1;
 	if (argc > 1)
 	{
-		while ()
+		ft_check_input(argv);
 	}
 	return (0);
 }
