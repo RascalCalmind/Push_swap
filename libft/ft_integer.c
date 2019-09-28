@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_checker.h                                       :+:    :+:            */
+/*   ft_integer.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/26 17:41:38 by lhageman       #+#    #+#                */
-/*   Updated: 2019/09/28 20:47:36 by lhageman      ########   odam.nl         */
+/*   Created: 2019/09/01 17:30:21 by lhageman       #+#    #+#                */
+/*   Updated: 2019/09/07 16:36:38 by mvan-hou      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CHECKER_H
-# define FT_CHECKER_H
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-# include "libft/ft_printf.h"
-# include <stdio.h>
+#include "ft_printf.h"
 
-
-int		ft_valid_input(char *str);
-int		ft_check_input(char **argv);
-int		*ft_store_input(char **argv);
-void	ft_print_int_array(int *array, int len);
-int        ft_read_input();
-
-#endif
+void	ft_integer(t_list *list, t_buf *buf, long long dble)
+{
+	ft_pretoa_base(list, buf, ft_abs(dble), 10);
+}

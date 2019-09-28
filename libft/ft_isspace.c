@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_checker.h                                       :+:    :+:            */
+/*   ft_isspace.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/26 17:41:38 by lhageman       #+#    #+#                */
-/*   Updated: 2019/09/28 20:47:36 by lhageman      ########   odam.nl         */
+/*   Created: 2019/08/02 19:51:25 by lhageman       #+#    #+#                */
+/*   Updated: 2019/08/02 19:52:35 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CHECKER_H
-# define FT_CHECKER_H
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-# include "libft/ft_printf.h"
-# include <stdio.h>
-
-
-int		ft_valid_input(char *str);
-int		ft_check_input(char **argv);
-int		*ft_store_input(char **argv);
-void	ft_print_int_array(int *array, int len);
-int        ft_read_input();
-
-#endif
+int	ft_isspace(char c)
+{
+	if (c == ' ')
+		return (1);
+	return (0);
+}

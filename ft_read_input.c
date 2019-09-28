@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 18:54:58 by lhageman       #+#    #+#                */
-/*   Updated: 2019/09/27 19:38:22 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/09/28 20:01:54 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,14 @@ int		ft_read_input(void)
 			if (i > 2 || i == -1)
 				return (-1);
 			str[i] = ch;
-			printf("string in read function:%s\n", str);
 			i++;
 		}
 		if (ch == '\n')
 		{
 			ret = ft_check_swap(str, i);
-			printf("ret in read input function: %i\n", ret);
 			if (ret == -1)
 				return (-1);
-			//i = ft_swap(str); //using i instead of ret will allow me to have 25 lines and catch the error? mayybe too late
+			//ret = ft_swap(str); //using i instead of ret will allow me to have 25 lines and catch the error? mayybe too late
 			i = 0;
 		}
 	}
