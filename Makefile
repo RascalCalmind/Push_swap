@@ -6,7 +6,7 @@
 #    By: lhageman <lhageman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/26 17:41:45 by lhageman       #+#    #+#                 #
-#    Updated: 2019/09/28 20:57:03 by lhageman      ########   odam.nl          #
+#    Updated: 2019/09/28 22:35:01 by lhageman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAMEPS	= push_swap.a
 LIBFT	= libft/libft.a
 NAMES = $(NAMEC) $(NAMEPS)
 
-CC 		= clang -o -Wall -Werror -Wextra
+CCC		= gcc -c -Wall -Werror -Wextra
+CCO		= gcc -Wall -Werror -Wextra -o
 
 SRCC	=	ft_checker.c \
 			ft_valid_input.c \
@@ -34,26 +35,17 @@ all:	$(NAMES)
 $(LIBFT):
 	@$(MAKE) -C libft
 
-# $(NAMEC): $(OBJC) $(LIBFT)
-# 	@echo "\033[0;34mmaking checker.a\033[0m"
-# 	@cp libft/libft.a $(NAMEC)
-# 	@ar crs $(NAMEC) $(OBJC)
+%.o: %.c
+	@$(CCO) $@ $<  -I./libft -c
 
-# $(NAMEPS): $(OBJPS) $(LIBFT)
-# 	@echo "\033[0;35mmaking push_swap.a\033[0m"
-# 	@cp libft/libft.a $(NAMEPS)
-# 	@ar crs $(NAMEPS) $(OBJPS)
-
-$(NAMEC): $(SRCC) $(LIBFT)
+$(NAMEC): $(OBJC) $(LIBFT)
 	@echo "\033[0;34mmaking checker.a\033[0m"
-# @$(CC) $(NAMEC) $(SRCC) -L./libft -lft
-	@clang -o $(NAMEC) $(SRCC) -Wall -Werror -Wextra -I./libft -L./libft libft
+	@$(CCO) $(NAMEC) $(OBJC) -L ./libft -lft
 
-# @$(CC) -o $(NAME) $(SRCS) $(CFLAGS)  -I./get_next_line -L./libft -I./libft/includes -lft
 
-$(NAMEPS): $(SRCPS) $(LIBFT)
+$(NAMEPS): $(OBJPS) $(LIBFT)
 	@echo "\033[0;35mmaking push_swap.a\033[0m"
-	@$(CC) $(NAMEPS) $(SRCPS)
+	@$(CCO) $(NAMEPS) $(OBJPS) -L ./libft -lft
 
 clean:
 	@$(MAKE) clean -C libft
