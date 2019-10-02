@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 17:14:36 by lhageman       #+#    #+#                */
-/*   Updated: 2019/09/28 22:55:02 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/02 18:28:56 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,29 @@ void		ft_print_int_array(int *array, int len)
 		i++;
 	}
 	ft_printf("\n-\na\n");
+}
+
+void		ft_print_two_int_array(int *array1, int *array2, int len)
+{
+	int i;
+	char *str;
+
+	i = 0;
+	array2[1] = INT32_MAX;
+	str = "----------------------------------\n";
+	while (i < len)
+	{
+		if (i == 0)
+			ft_printf("%s", str);
+		if(array1[i] && array2[i] && array1[i] <= 9999999 && array1[i] >= -999999)
+			ft_printf("%i\t\t\t%i\n", array1[i], array2[i]);
+		else if (array1[i] && array2[i])
+			ft_printf("%i\t\t%i\n", array1[i], array2[i]);
+		else if (array1[i] && !array2[i])
+			ft_printf("%i\n", array1[i]);
+		else if (!array1[i] && array2[i])
+			ft_printf("\t\t\t%i\n", array2[i]);
+		i++;
+	}
+	ft_printf("\n-\t\t\t-\na\t\t\tb\n%s", str);
 }

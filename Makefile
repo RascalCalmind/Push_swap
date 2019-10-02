@@ -6,7 +6,7 @@
 #    By: lhageman <lhageman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/26 17:41:45 by lhageman       #+#    #+#                 #
-#    Updated: 2019/09/28 22:35:01 by lhageman      ########   odam.nl          #
+#    Updated: 2019/10/02 17:48:35 by lhageman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCC	=	ft_checker.c \
 			ft_valid_input.c \
 			ft_store_input.c \
 			ft_print_int_array.c \
-			ft_read_input.c
+			ft_read_input.c \
+			ft_set_array.c
 
 SRCPS	=	ft_push_swap.c
 
