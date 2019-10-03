@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 17:14:36 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/02 18:28:56 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/03 15:25:28 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,22 @@ void		ft_print_two_int_array(int *array1, int *array2, int len)
 	char *str;
 
 	i = 0;
-	array2[1] = INT32_MAX;
-	str = "----------------------------------\n";
+	str = "-----------------------------------------------\n";
 	while (i < len)
 	{
 		if (i == 0)
 			ft_printf("%s", str);
 		if(array1[i] && array2[i] && array1[i] <= 9999999 && array1[i] >= -999999)
-			ft_printf("%i\t\t\t%i\n", array1[i], array2[i]);
+			ft_printf("|\t%i\t\t|\t%i\n", array1[i], array2[i]);
 		else if (array1[i] && array2[i])
-			ft_printf("%i\t\t%i\n", array1[i], array2[i]);
+			ft_printf("|\t%i\t|\t%i\n", array1[i], array2[i]);
+		else if(array1[i] && !array2[i] && array1[i] <= 9999999 && array1[i] >= -999999)
+			ft_printf("|\t%i\t\t|\n", array1[i]);
 		else if (array1[i] && !array2[i])
-			ft_printf("%i\n", array1[i]);
+			ft_printf("|\t%i\t|\n", array1[i]);
 		else if (!array1[i] && array2[i])
-			ft_printf("\t\t\t%i\n", array2[i]);
+			ft_printf("|\t\t\t|\t%i\n", array2[i]);
 		i++;
 	}
-	ft_printf("\n-\t\t\t-\na\t\t\tb\n%s", str);
+	ft_printf("|\t\t\t|\n%s|  stack a\t\t|  stack b\n%s", str, str);
 }

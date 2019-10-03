@@ -20,6 +20,7 @@ void	ft_putstr(const char *str);
 void	ft_putnbr(long long nb);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
+void	ft_strclr(char *s);
 
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s1);
@@ -32,5 +33,6 @@ size_t	ft_strlen(const char *s);
 int		ft_isspace(char c);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
+int     ft_strcmp(const char *s1, const char *s2);
 
 #endif

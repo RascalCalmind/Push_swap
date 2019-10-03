@@ -47,7 +47,9 @@ SRCC =	ft_itoa.c \
 	ft_binary.c \
 	ft_time.c \
 	ft_time2.c \
-	ft_time3.c
+	ft_time3.c \
+	ft_strcmp.c \
+	ft_strclr.c
 
 SRCO	= $(SRCC:%.c=%.o)
 TRASH	= $(SRCC:%.c=%.c~)

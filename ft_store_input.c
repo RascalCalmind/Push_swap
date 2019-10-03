@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 16:48:59 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/02 18:24:16 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/03 14:44:15 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,20 @@ int		ft_store_int(char *str)
 	return (arr_value);
 }
 
-int		ft_store_input(char **argv)
+int		ft_store_input(char **argv, t_arrlist *arlst)
 {
 	int			len;
-	t_arrlist	*arlst;
 
-	arlst = malloc(sizeof(t_arrlist));
-	if (!arlst)
-		return (-1);
 	len = ft_calc_len(argv);
 	if (len < 1)
 		return (-1);
+	if (ft_strcmp(argv[1], "-v") == 0)
+	{
+		len--;
+		arlst->vflag = 1;
+	}
+	else
+		arlst->vflag = 0;
 	arlst->arr_a = malloc(sizeof(int) * len + 1);
 	if (!arlst->arr_a)
 	{
@@ -58,12 +61,21 @@ int		ft_store_input(char **argv)
 		return (-1);
 	}
 	ft_set_int_array_list(arlst, len);
+	if (arlst->vflag == 1)
+		len++;
 	while (len > 0)
 	{
-		arlst->arr_a[len - 1] = ft_store_int(argv[len]);
+		if (ft_strcmp(argv[len], "-v") == 0)
+			break;
+		if (arlst->vflag == 1)
+			arlst->arr_a[len - 2] = ft_store_int(argv[len]);
+		else
+			arlst->arr_a[len - 1] = ft_store_int(argv[len]);
 		len--;
 	}
-	// ft_print_int_array(arlst->arr_a, ft_calc_len(argv));
-	ft_print_two_int_array(arlst->arr_a, arlst->arr_b, ft_calc_len(argv));
+	arlst->len = ft_calc_len(argv);
+	if (arlst->vflag == 1)
+		arlst->len -= 1;
+	ft_print_two_int_array(arlst->arr_a, arlst->arr_b, arlst->len);
 	return (0);
 }

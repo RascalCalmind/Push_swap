@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 18:54:58 by lhageman       #+#    #+#                */
-/*   Updated: 2019/09/28 22:52:54 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/03 18:34:47 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,23 @@ int		ft_check_swap(char *str, int i)
 		{
 			if (i == 2)
 				return (0);
-			if (str[2] == 'a' && i == 3)
+			if ((str[2] == 'a' || str[2] == 'b' || str[2] == 'r') && i == 3)
 				return (0);
 		}
 	}
 	return (-1);
 }
 
-int		ft_read_input(void)
+int		ft_read_input(t_arrlist *list)
 {
 	char	ch;
-	char	str[3];
+	char	*str;
 	int		ret;
 	int		i;
 
 	ret = 0;
 	i = 0;
+	str = ft_strnew(3);
 	while (read(STDIN_FILENO, &ch, 1) > 0)
 	{
 		if (ch != '\n')
@@ -78,9 +79,11 @@ int		ft_read_input(void)
 			ret = ft_check_swap(str, i);
 			if (ret == -1)
 				return (-1);
-			//ret = ft_swap(str); //using i instead of ret will allow me to have 25 lines and catch the error? mayybe too late
+			ret = ft_swap(str, list); //using i instead of ret will allow me to have 25 lines and catch the error? mayybe too late
 			i = 0;
+			ft_strclr(str);
 		}
 	}
+	free(str);
 	return (0);
 }
