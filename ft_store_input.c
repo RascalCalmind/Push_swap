@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 16:48:59 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/03 14:44:15 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/06 15:26:09 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,16 @@ int		ft_store_input(char **argv, t_arrlist *arlst)
 	while (len > 0)
 	{
 		if (ft_strcmp(argv[len], "-v") == 0)
-			break;
+			break ;
 		if (arlst->vflag == 1)
 			arlst->arr_a[len - 2] = ft_store_int(argv[len]);
 		else
 			arlst->arr_a[len - 1] = ft_store_int(argv[len]);
 		len--;
 	}
-	arlst->len = ft_calc_len(argv);
+	arlst->len_a = ft_calc_len(argv);
 	if (arlst->vflag == 1)
-		arlst->len -= 1;
-	ft_print_two_int_array(arlst->arr_a, arlst->arr_b, arlst->len);
+		arlst->len_a -= 1;
+	ft_print_two_int_array(arlst->arr_a, arlst->arr_b, arlst->len_a);
 	return (0);
 }

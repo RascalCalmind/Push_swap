@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 17:44:42 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/03 15:15:52 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/06 14:58:14 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,6 @@ void	ft_set_int_array_list(t_arrlist *list, int len)
 		i++;
 	}
 	ft_print_two_int_array(list->arr_a, list->arr_b, len);
+	list->len_a = len;
+	list->len_b = 0;
 }

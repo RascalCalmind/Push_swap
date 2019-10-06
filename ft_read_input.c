@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 18:54:58 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/03 18:34:47 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/06 15:40:11 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ int		ft_read_input(t_arrlist *list)
 		}
 		if (ch == '\n')
 		{
+			if (str[0] == '\0')
+			{
+				free(str);
+				return (0);
+			}
 			ret = ft_check_swap(str, i);
 			if (ret == -1)
 				return (-1);

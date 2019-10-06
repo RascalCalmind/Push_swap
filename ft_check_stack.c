@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_checker.c                                       :+:    :+:            */
+/*   ft_check_stack.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/26 17:41:33 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/06 15:28:51 by lhageman      ########   odam.nl         */
+/*   Created: 2019/10/06 15:31:10 by lhageman       #+#    #+#                */
+/*   Updated: 2019/10/06 15:34:24 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker.h"
-#include <stdio.h>
 
-int		main(int argc, char **argv)
+void	ft_check_stack(t_arrlist *list)
 {
-	int ret;
-	t_arrlist	*arlst;
+	int i;
 
-
-
-	if (argc > 1)
+	i = 0;
+	if (list->len_b > 0)
 	{
-		ret = ft_check_input(argv);
-		if (ret == -1)
-			return (-1);
-		arlst = malloc(sizeof(t_arrlist));
-		if (!arlst)
-			return (-1);
-		ret = ft_store_input(argv, arlst);
-		if (ret == -1)
-			return (-1);
-		ret = ft_read_input(arlst);
-		if (ret == -1)
-			return (-1);
-		ft_check_stack(arlst);
-		free(arlst);
-		arlst = NULL;
+		ft_printf("KO\n");
+		return;
 	}
-	return (0);
+	while (i < list->len_a)
+	{
+		if (list->arr_a[i] > list->arr_a[i + 1])
+		{
+			ft_printf("KO\n");
+			return ;
+		}
+		i++;
+	}
+	ft_printf("OK\n");
 }

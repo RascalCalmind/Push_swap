@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/03 14:53:45 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/03 20:00:57 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/06 15:05:42 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,16 @@ int		ft_pa(t_arrlist *list)
 		if (!list->arr_a[0])
 		{
 			list->arr_a[0] = list->arr_b[0];
-			ft_switch_down(i, list->len, list->arr_b);
+			ft_switch_down(i, list->len_b, list->arr_b);
 		}
 		else
 		{
-			ft_switch_up(list->arr_a, list->len - 1);
+			ft_switch_up(list->arr_a, list->len_a);
 			list->arr_a[0] = list->arr_b[0];
-			ft_switch_down(i, list->len, list->arr_b);
+			ft_switch_down(i, list->len_b, list->arr_b);
 		}
+		list->len_b--;
+		list->len_a++;
 	}
 	return (0);
 }
@@ -69,14 +71,16 @@ int		ft_pb(t_arrlist *list)
 		if (!list->arr_b[0])
 		{
 			list->arr_b[0] = list->arr_a[0];
-			ft_switch_down(i, list->len, list->arr_a);
+			ft_switch_down(i, list->len_a, list->arr_a);
 		}
 		else
 		{
-			ft_switch_up(list->arr_b, list->len - 1);
+			ft_switch_up(list->arr_b, list->len_b);
 			list->arr_b[0] = list->arr_a[0];
-			ft_switch_down(i, list->len, list->arr_a);
+			ft_switch_down(i, list->len_a, list->arr_a);
 		}
+		list->len_b++;
+		list->len_a--;
 	}
 	return (0);
 }

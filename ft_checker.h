@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:38 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/03 20:09:10 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/06 15:34:38 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ typedef struct		s_arrlist
 	int		*arr_a;
 	int		*arr_b;
 	short	vflag;
-	short	len;
+	short	len_a;
+	short	len_b;
 }					t_arrlist;
 
 
@@ -37,7 +38,10 @@ int					ft_swap(char *str, t_arrlist *list);
 int					ft_push(char *str, t_arrlist *list);
 int					ft_rotate(char *str, t_arrlist *list);
 int					ft_reverse_rotate(char *str, t_arrlist *list);
+int					ft_sa(t_arrlist *list);
+int					ft_sb(t_arrlist *list);
 void				ft_switch_down(int i, int len, int *arr);
 void				ft_switch_up(int *arr, int len);
+void				ft_check_stack(t_arrlist *list);
 
 #endif

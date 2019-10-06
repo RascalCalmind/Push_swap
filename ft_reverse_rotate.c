@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/03 17:57:52 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/03 20:07:44 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/06 15:24:50 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,21 @@
 int     ft_rra(t_arrlist *list)
 {
 	int temp;
-	int i;
 	int j;
 
-	i = 0;
 	j = 1;
 	if (list->arr_a[0])
 	{
-		while (list->arr_a[i] && i < list->len - 1)
-			i++;
-		ft_printf("i in rra: %i\n", i);
-		if (list->arr_a[i] == 0)
+		if (list->len_a == 2)
 		{
-			i--;
-			j++;
+			ft_sa(list);
+			return (0);
 		}
-		ft_printf("i in rra: %i\n", i);
-		temp = list->arr_a[i];
-		ft_switch_up(list->arr_a, list->len - j);
+		temp = list->arr_a[list->len_a - 1];
+		ft_switch_up(list->arr_a, list->len_a - j);
 		if (j > 1)
 		{
-			list->arr_a[list->len - 1] = 0;
+			list->arr_a[list->len_a - 1] = 0;
 		}
 		list->arr_a[0] = temp;
 	}
@@ -45,24 +39,24 @@ int     ft_rra(t_arrlist *list)
 int		ft_rrb(t_arrlist *list)
 {
 	int temp;
-	int i;
+	int j;
 
-	i = 0;
+	j = 1;
 	if (list->arr_b[0])
 	{
-		while (list->arr_b[i] && i < list->len - 1)
-			i++;
-		temp = list->arr_b[i];
-		ft_switch_up(list->arr_b, list->len - 1);
+		if (list->len_b == 2)
+		{
+			ft_sb(list);
+			return (0);
+		}
+		temp = list->arr_b[list->len_b - 1];
+		ft_switch_up(list->arr_b, list->len_b - j);
+		if (j > 1)
+		{
+			list->arr_b[list->len_b - 1] = 0;
+		}
 		list->arr_b[0] = temp;
 	}
-	return (0);
-}
-
-int		ft_rrr(t_arrlist *list)
-{
-	ft_rra(list);
-	ft_rrb(list);
 	return (0);
 }
 
@@ -73,6 +67,9 @@ int		ft_reverse_rotate(char *str, t_arrlist *list)
 	if ((ft_strcmp(str, "rrb")) == 0)
 		ft_rrb(list);
 	if ((ft_strcmp(str, "rrr")) == 0)
-		ft_rrr(list);
+	{
+		ft_rra(list);
+		ft_rrb(list);
+	}
 	return (0);
 }
