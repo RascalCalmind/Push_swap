@@ -6,7 +6,7 @@
 /*   By: lhageman <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/24 22:17:20 by lhageman       #+#    #+#                */
-/*   Updated: 2019/09/21 14:44:11 by mvan-hou      ########   odam.nl         */
+/*   Updated: 2019/10/07 15:22:32 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ size_t	ft_strlen(const char *s);
 int		ft_isspace(char c);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
-int     ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

@@ -6,11 +6,32 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 16:48:59 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/06 15:26:09 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/07 16:01:49 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker.h"
+
+int		ft_find_doubles(t_arrlist *list)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 1;
+	while (i < list->len_a)
+	{
+		while (j < list->len_a)
+		{
+			if (list->arr_a[i] == list->arr_a[j])
+				return (-1);
+			j++;
+		}
+		i++;
+		j = i + 1;
+	}
+	return (0);
+}
 
 int		ft_calc_len(char **argv)
 {
@@ -32,32 +53,18 @@ int		ft_store_int(char *str)
 	return (arr_value);
 }
 
-int		ft_store_input(char **argv, t_arrlist *arlst)
+int		ft_allocate_store(t_arrlist *arlst, char **argv, int len)
 {
-	int			len;
-
-	len = ft_calc_len(argv);
-	if (len < 1)
-		return (-1);
-	if (ft_strcmp(argv[1], "-v") == 0)
-	{
-		len--;
-		arlst->vflag = 1;
-	}
-	else
-		arlst->vflag = 0;
 	arlst->arr_a = malloc(sizeof(int) * len + 1);
 	if (!arlst->arr_a)
 	{
-		free(arlst);
-		arlst = NULL;
+		ft_free_arrlist(arlst);
 		return (-1);
 	}
 	arlst->arr_b = malloc(sizeof(int) * len + 1);
 	if (!arlst->arr_b)
 	{
-		free(arlst->arr_a);
-		arlst->arr_a = NULL;
+		ft_free_arrlist(arlst);
 		return (-1);
 	}
 	ft_set_int_array_list(arlst, len);
@@ -73,9 +80,34 @@ int		ft_store_input(char **argv, t_arrlist *arlst)
 			arlst->arr_a[len - 1] = ft_store_int(argv[len]);
 		len--;
 	}
+	return (0);
+}
+
+int		ft_store_input(char **argv, t_arrlist *arlst)
+{
+	int			len;
+
+	len = ft_calc_len(argv);
+	if (len < 1)
+		return (-1);
+	if (ft_strcmp(argv[1], "-v") == 0)
+	{
+		len--;
+		arlst->vflag = 1;
+	}
+	else
+		arlst->vflag = 0;
+	if (ft_allocate_store(arlst, argv, len) == -1)
+		return (-1);
 	arlst->len_a = ft_calc_len(argv);
 	if (arlst->vflag == 1)
 		arlst->len_a -= 1;
+	if (ft_find_doubles(arlst) == -1)
+	{
+		ft_free_arrlist(arlst);
+		ft_dprintf(2, "Error\n");
+		return (-1);
+	}
 	ft_print_two_int_array(arlst->arr_a, arlst->arr_b, arlst->len_a);
 	return (0);
 }

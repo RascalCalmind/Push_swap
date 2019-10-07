@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:38 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/06 15:34:38 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/07 15:27:35 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct		s_arrlist
 	short	len_b;
 }					t_arrlist;
 
-
 int					ft_valid_input(char *str);
 int					ft_check_input(char **argv);
 int					ft_store_input(char **argv, t_arrlist *arlst);
@@ -43,5 +42,6 @@ int					ft_sb(t_arrlist *list);
 void				ft_switch_down(int i, int len, int *arr);
 void				ft_switch_up(int *arr, int len);
 void				ft_check_stack(t_arrlist *list);
+void				ft_free_arrlist(t_arrlist *list);
 
 #endif

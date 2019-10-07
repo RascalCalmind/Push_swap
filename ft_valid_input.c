@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 14:04:11 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/03 12:29:30 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/07 14:57:29 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		ft_check_input(char **argv)
 	{
 		if (ft_valid_input(argv[i]) == -1)
 		{
-			write(2, "Error\n", 6);
+			ft_dprintf(2, "Error\n");
 			return (-1);
 		}
 		i++;

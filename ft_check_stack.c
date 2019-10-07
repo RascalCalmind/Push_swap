@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/06 15:31:10 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/06 15:34:24 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/07 15:24:13 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	ft_check_stack(t_arrlist *list)
 	if (list->len_b > 0)
 	{
 		ft_printf("KO\n");
-		return;
+		return ;
 	}
-	while (i < list->len_a)
+	while (i < list->len_a - 1)
 	{
 		if (list->arr_a[i] > list->arr_a[i + 1])
 		{

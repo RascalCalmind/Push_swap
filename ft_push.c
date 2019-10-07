@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/03 14:53:45 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/06 15:05:42 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/07 16:06:17 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ int		ft_pa(t_arrlist *list)
 		}
 		list->len_b--;
 		list->len_a++;
+		if (list->len_b == 0)
+		{
+			list->arr_b[0] = 0;
+		}
 	}
 	return (0);
 }
@@ -81,6 +85,10 @@ int		ft_pb(t_arrlist *list)
 		}
 		list->len_b++;
 		list->len_a--;
+		if (list->len_a == 0)
+		{
+			list->arr_a[0] = 0;
+		}
 	}
 	return (0);
 }

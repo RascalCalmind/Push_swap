@@ -6,13 +6,13 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/03 17:57:52 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/06 15:24:50 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/07 15:25:08 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker.h"
 
-int     ft_rra(t_arrlist *list)
+int		ft_rra(t_arrlist *list)
 {
 	int temp;
 	int j;

@@ -6,27 +6,11 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 18:54:58 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/06 15:40:11 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/07 15:36:50 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker.h"
-
-// int     ft_calc_n_len(char *str, char delim)
-// {
-//     int i;
-//     int len;
-
-//     i = 0;
-//     len = 1;
-//     while (str[i])
-//     {
-//         if (str[i] == delim)
-//             len++;
-//         i++;
-//     }
-//     return (len);
-// }
 
 int		ft_check_swap(char *str, int i)
 {
@@ -83,9 +67,11 @@ int		ft_read_input(t_arrlist *list)
 			}
 			ret = ft_check_swap(str, i);
 			if (ret == -1)
+			{
+				free(str);
 				return (-1);
-			ret = ft_swap(str, list); //using i instead of ret will allow me to have 25 lines and catch the error? mayybe too late
-			i = 0;
+			}
+			i = ft_swap(str, list);
 			ft_strclr(str);
 		}
 	}
