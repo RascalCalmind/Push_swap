@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:33 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/07 15:32:44 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/12 15:51:55 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int		main(int argc, char **argv)
 		arlst = malloc(sizeof(t_arrlist));
 		if (!arlst)
 			return (-1);
-		ret = ft_store_input(argv, arlst);
-		if (ret == -1)
+		if (ft_store_input(argv, arlst) == -1)
 			return (-1);
 		ret = ft_read_input(arlst);
 		if (ret == -1)

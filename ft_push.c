@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/03 14:53:45 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/07 16:06:17 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/12 16:03:57 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		ft_pa(t_arrlist *list)
 	i = 1;
 	if (list->arr_b[0])
 	{
-		if (!list->arr_a[0])
+		if (list->len_a < 1)
 		{
 			list->arr_a[0] = list->arr_b[0];
 			ft_switch_down(i, list->len_b, list->arr_b);
@@ -72,7 +72,7 @@ int		ft_pb(t_arrlist *list)
 	i = 1;
 	if (list->arr_a[0])
 	{
-		if (!list->arr_b[0])
+		if (list->len_b < 1)
 		{
 			list->arr_b[0] = list->arr_a[0];
 			ft_switch_down(i, list->len_a, list->arr_a);
