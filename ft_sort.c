@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/16 18:23:18 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/23 18:18:17 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/10/30 14:02:38 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int		ft_sort(t_arrlist *list)
 	{
 		ret = ft_bubblesort(list);
 		ft_sorter(list, ret);
-		ft_printf("The List in ft_SORT\n");
-		ft_print_stacks(list);
 	}
 	return (0);
 }
