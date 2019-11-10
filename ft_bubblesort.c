@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/23 16:12:32 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/10 18:31:27 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/10 22:32:27 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int		ft_middle(t_arrlist *list)
 	int number;
 
 	middle = list->len_a / 2;
+	if (list->len_a % 2 == 0)
+		middle -= 1;
 	number = list->arr_a[middle];
 	return (number);
 }
@@ -294,13 +296,13 @@ void	ft_list_copy(t_arrlist *list, t_arrlist *copy)
 	copy->len_b = list->len_b;
 	copy->arr_a = malloc(sizeof(int) * list->len_a);
 	copy->arr_b = malloc(sizeof(int) * list->len_a);
-	while (i < list->len_a && list->arr_a[i])
+	while (i < list->len_a)
 	{
 		copy->arr_a[i] = list->arr_a[i];
 		i++;
 	}
 	i = 0;
-	while (i < list->len_b && list->arr_b[i])
+	while (i < list->len_b)
 	{
 		copy->arr_b[i] = list->arr_b[i];
 		i++;
@@ -328,5 +330,6 @@ int		ft_bubblesort(t_arrlist *list_og)
 			i++;
 	}
 	middle = ft_middle(list);
+	free(list);
 	return (middle);
 }

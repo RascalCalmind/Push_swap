@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:43 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/10 18:58:48 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/10 22:02:58 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	ft_sorter(t_arrlist *list, int middle);
 int	    ft_sorted(t_arrlist *list);
 int		ft_sort_bigger(t_arrlist *list, int middle);
 void	ft_sort_three(t_arrlist *list);
+int     ft_sort_back(t_arrlist *list);
 
 #endif
