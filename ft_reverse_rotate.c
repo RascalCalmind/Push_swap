@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/03 17:57:52 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/12 21:14:47 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/10 15:34:57 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_rra(t_arrlist *list)
 	int j;
 
 	j = 1;
-	if (list->arr_a[0] && list->len_a > 1)
+	if (list->len_a > 1)
 	{
 		if (list->len_a == 2)
 		{
@@ -32,6 +32,10 @@ int		ft_rra(t_arrlist *list)
 			list->arr_a[list->len_a - 1] = 0;
 		}
 		list->arr_a[0] = temp;
+		if (list->prog == 1)
+			ft_printf("rra\n");
+		if (list->vflag == 1)
+			ft_print_stacks(list);
 	}
 	return (0);
 }
@@ -42,7 +46,7 @@ int		ft_rrb(t_arrlist *list)
 	int j;
 
 	j = 1;
-	if (list->arr_b[0] && list->len_b > 1)
+	if (list->len_b > 1)
 	{
 		if (list->len_b == 2)
 		{
@@ -56,6 +60,31 @@ int		ft_rrb(t_arrlist *list)
 			list->arr_b[list->len_b - 1] = 0;
 		}
 		list->arr_b[0] = temp;
+		if (list->prog == 1)
+			ft_printf("rrb\n");
+		if (list->vflag == 1)
+			ft_print_stacks(list);
+	}
+	return (0);
+}
+
+int		ft_rrr(t_arrlist *list)
+{
+	if (list->prog == 1)
+		list->prog = 2;
+	if (list->vflag == 1)
+		list->vflag = 2;
+	ft_rra(list);
+	ft_rrb(list);
+	if (list->prog == 2)
+	{
+		ft_printf("rrr\n");
+		list->prog = 1;
+	}
+	if (list->vflag == 2)
+	{
+		ft_print_stacks(list);
+		list->vflag = 1;
 	}
 	return (0);
 }
@@ -67,9 +96,6 @@ int		ft_reverse_rotate(char *str, t_arrlist *list)
 	if ((ft_strcmp(str, "rrb")) == 0)
 		ft_rrb(list);
 	if ((ft_strcmp(str, "rrr")) == 0)
-	{
-		ft_rra(list);
-		ft_rrb(list);
-	}
+		ft_rrr(list);
 	return (0);
 }

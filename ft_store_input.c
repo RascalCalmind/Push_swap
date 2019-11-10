@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 16:48:59 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/16 20:05:33 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/04 12:26:34 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ int		ft_store_input(char **argv, t_arrlist *arlst)
 		ft_dprintf(2, "Error\n");
 		return (-1);
 	}
-	ft_print_two_int_array(arlst->arr_a, arlst->arr_b, arlst->len_a);
+	ft_print_stacks(arlst);
 	return (0);
 }

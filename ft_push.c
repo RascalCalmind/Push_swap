@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/03 14:53:45 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/12 16:03:57 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/10 15:38:02 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_switch_up(int *arr, int len)
 	int j;
 
 	j = 0;
-	while (arr[j] && j < len)
+	while (j < len)
 		j++;
 	while (j >= 0)
 	{
@@ -42,7 +42,7 @@ int		ft_pa(t_arrlist *list)
 	int i;
 
 	i = 1;
-	if (list->arr_b[0])
+	if (list->len_b > 0)
 	{
 		if (list->len_a < 1)
 		{
@@ -57,10 +57,10 @@ int		ft_pa(t_arrlist *list)
 		}
 		list->len_b--;
 		list->len_a++;
-		if (list->len_b == 0)
-		{
-			list->arr_b[0] = 0;
-		}
+		if (list->prog == 1)
+			ft_printf("pa\n");
+		if (list->vflag == 1)
+			ft_print_stacks(list);
 	}
 	return (0);
 }
@@ -70,7 +70,7 @@ int		ft_pb(t_arrlist *list)
 	int i;
 
 	i = 1;
-	if (list->arr_a[0])
+	if (list->len_a > 1)
 	{
 		if (list->len_b < 1)
 		{
@@ -85,10 +85,10 @@ int		ft_pb(t_arrlist *list)
 		}
 		list->len_b++;
 		list->len_a--;
-		if (list->len_a == 0)
-		{
-			list->arr_a[0] = 0;
-		}
+		if (list->prog == 1)
+			ft_printf("pb\n");
+		if (list->vflag == 1)
+			ft_print_stacks(list);
 	}
 	return (0);
 }

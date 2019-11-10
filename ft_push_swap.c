@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:41 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/30 14:16:29 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/04 14:59:55 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		main(int argc, char **argv)
 		if (!arlst)
 			return (-1);
 		ret = ft_store_input(argv, arlst);
+		arlst->prog = 1;
 		if (ret == -1)
 		{
 			ft_free_arrlist(arlst);

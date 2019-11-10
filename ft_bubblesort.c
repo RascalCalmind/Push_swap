@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/23 16:12:32 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/30 15:23:38 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/10 18:31:27 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,48 @@ static int	ft_swap_two(t_arrlist *list, int i, int j)
 	return (0);
 }
 
-static int	ft_sorted(t_arrlist *list)
-{
-	int i;
+// static int	ft_sorted(t_arrlist *list)
+// {
+// 	int i;
 
-	i = 0;
-	if (list->len_b > 0)
-		return (-1);
-	while (i < list->len_a - 1)
-	{
-		if (list->arr_a[i] > list->arr_a[i + 1])
-			return (-1);
-		i++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	if (list->len_b > 0)
+// 		return (-1);
+// 	while (i < list->len_a - 1)
+// 	{
+// 		if (list->arr_a[i] > list->arr_a[i + 1])
+// 			return (-1);
+// 		i++;
+// 	}
+// 	return (0);
+// }
+
+// static void ft_find_smallest(t_arrlist *list)
+// {
+// 	int i;
+// 	int j;
+
+// 	ft_printf("find smallest!\n");
+// 	i = 0;
+// 	j = 1;
+// 	while (j < list->len_a - 1)
+// 	{
+// 		if (list->arr_a[i] > list->arr_a[j])
+// 			i = j;
+// 		j++;
+// 	}
+// 	if (i == 1)
+// 		ft_rra(list);
+// 	if (i == 2)
+// 		ft_ra(list);
+// 	// if (list->arr_a[1] > list->arr_a[2])
+// 	// {
+// 	// 	ft_ra(list);
+// 	// 	ft_sa(list);
+// 	// 	ft_rra(list);
+// 	// }
+// 	ft_pb(list);
+// }
 
 static int	ft_bubble_sorted_a(t_arrlist *list)
 {
@@ -63,270 +90,200 @@ int		ft_middle(t_arrlist *list)
 	return (number);
 }
 
-int ft_nonumber(t_arrlist *list, int middle)
-{
-	int i;
+// int ft_nonumber(t_arrlist *list, int middle)
+// {
+// 	int i;
 
-	i = 0;
-	while (i < list->len_a - 1)
-	{
-		if (list->arr_a[i] < middle)
-			return (i);
-		i++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	while (i < list->len_a - 1)
+// 	{
+// 		if (list->arr_a[i] < middle)
+// 			return (i);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
-int		ft_whichway(t_arrlist *list, int middle)
-{
-	int min;
-	int max;
-	int ret;
+// int		ft_whichway(t_arrlist *list, int middle)
+// {
+// 	int min;
+// 	int max;
+// 	int ret;
 
-	min = 0;
-	max = list->len_a - 1;
-	while (min != max && min <= max)
-	{
-		if (list->arr_a[min] <= middle)
-			return (min);
-		else if (list->arr_a[max] <= middle)
-			return ((list->len_a - max) * -1);
-		else
-		{
-			min++;
-			max--;
-		}
-	}
-	ret = ft_nonumber(list, middle);
-	if (min == max)
-		return (ret);
-	return (0);
-}
+// 	min = 0;
+// 	max = list->len_a - 1;
+// 	while (min != max && min <= max)
+// 	{
+// 		if (list->arr_a[min] <= middle)
+// 			return (min);
+// 		else if (list->arr_a[max] <= middle)
+// 			return ((list->len_a - max) * -1);
+// 		else
+// 		{
+// 			min++;
+// 			max--;
+// 		}
+// 	}
+// 	ret = ft_nonumber(list, middle);
+// 	if (min == max)
+// 		return (ret);
+// 	return (0);
+// }
 
-int		ft_done(t_arrlist *list, int middle)
-{
-	int min;
-	int max;
+// int		ft_done(t_arrlist *list, int middle)
+// {
+// 	int min;
+// 	int max;
 
-	min = 0;
-	max = list->len_a - 1;
-	while (min != max && min < max)
-	{
-		if (list->arr_a[min] <= middle)
-			return (0);
-		else if (list->arr_a[max] <= middle)
-			return (0);
-		else
-		{
-			min++;
-			max++;
-		}
-	}
-	if (min == max || min > max)
-		return (1);
-	return (0);
-}
+// 	min = 0;
+// 	max = list->len_a - 1;
+// 	while (min != max && min < max)
+// 	{
+// 		if (list->arr_a[min] <= middle)
+// 			return (0);
+// 		else if (list->arr_a[max] <= middle)
+// 			return (0);
+// 		else
+// 		{
+// 			min++;
+// 			max++;
+// 		}
+// 	}
+// 	if (min == max || min > max)
+// 		return (1);
+// 	return (0);
+// }
 
-int		ft_tob_and_rotate(t_arrlist *list, int middle, int push)
-{
-	int ret;
+// int		ft_tob_and_rotate(t_arrlist *list, int middle, int push)
+// {
+// 	int ret;
 
-	ret = 1;
-	if (push == 1)
-	{
-		ft_printf("pb\n");
-		ft_pb(list);
-	}
-	ret = ft_whichway(list, middle);
-	if (ret == 0)
-	{	
-		ret = ft_done(list, middle);
-		if (ret == 1)
-			return (-1);
-	}
-	if (ret != 0)
-	{
-		while (ret > 0)
-		{
-			ft_printf("ra\n");
-			ft_ra(list);
-			ret--;
-		}
-		while (ret < 0)
-		{
-			ft_printf("rra\n");
-			ft_rra(list);
-			ret++;
-		}
-	}
-	return (0);
-}
+// 	ret = 1;
+// 	if (list->len_a == 3)
+// 	{
+// 		ft_find_smallest(list);
+// 		return (0);
+// 	}
+// 	if (list->len_a < 3)
+// 		return (0);
+// 	if (push == 1)
+// 		ft_pb(list);
+// 	ret = ft_whichway(list, middle);
+// 	if (ret == 0)
+// 	{
+// 		ret = ft_done(list, middle);
+// 		if (ret == 1)
+// 			return (-1);
+// 	}
+// 	if (ret != 0)
+// 	{
+// 		while (ret > 0)
+// 		{
+// 			ft_ra(list);
+// 			ret--;
+// 		}
+// 		while (ret < 0)
+// 		{
+// 			ft_rra(list);
+// 			ret++;
+// 		}
+// 	}
+// 	return (0);
+// }
 
-static void		ft_ss(t_arrlist *list)
-{
-	ft_sa(list);
-	ft_sb(list);
-}
+// static void		ft_ss(t_arrlist *list)
+// {
+// 	ft_sa(list);
+// 	ft_sb(list);
+// }
 
-int ft_get_a_sorted(t_arrlist *list)
-{
-		if (list->arr_a[0] > list->arr_a[1])
-			ft_sa(list);
-		ft_pa(list);
-		ft_pa(list);
-		ft_printf("pa\npa\n");
-	while(ft_sorted(list) != 0)
-	{
-		if (list->arr_a[0] > list->arr_a[1] && list->arr_b[1] > list->arr_b[0])
-		{
-			ft_ss(list);
-			ft_printf("ss\n");
-			if (list->vflag == 1)
-				ft_print_stacks(list);
-		}
-		if (list->arr_a[0] > list->arr_a[1])
-		{
-			ft_sa(list);
-			ft_printf("sa\n");
-			if (list->vflag == 1)
-				ft_print_stacks(list);
-		}
-		if (list->arr_b[1] > list->arr_b[0])
-		{
-			ft_sb(list);
-			ft_printf("sb\n");
-			if (list->vflag == 1)
-				ft_print_stacks(list);
-		}
-		if (list->arr_a[0] < list->arr_b[0])
-		{
-			ft_pa(list);
-			ft_ra(list);
-			ft_pb(list);
-			ft_rra(list);
-			ft_printf("pa, ra, pb, rra\n");
-			if (list->vflag == 1)
-				ft_print_stacks(list);
-			if (list->arr_a[0] > list->arr_a[1] && list->arr_b[1] > list->arr_b[0])
-			{
-				ft_ss(list);
-				ft_printf("ss\n");
-				if (list->vflag == 1)
-					ft_print_stacks(list);
-			}
-			if (list->arr_a[0] > list->arr_a[1])
-			{
-				ft_sa(list);
-				ft_printf("sa\n");
-				if (list->vflag == 1)
-					ft_print_stacks(list);
-			}
-			if (list->arr_b[1] > list->arr_b[0])
-			{
-				ft_sb(list);
-				ft_printf("sb\n");
-				if (list->vflag == 1)
-					ft_print_stacks(list);
-			}
-		}
-		if (list->arr_a[1] < list->arr_b[0])
-		{
-			ft_ra(list);
-			ft_pb(list);
-			ft_rra(list);
-			ft_printf("ra\npb\nrra\n");
-			if (list->vflag == 1)
-				ft_print_stacks(list);
-		}
-		if (list->arr_a[0] > list->arr_b[0])
-		{
-			ft_pa(list);
-			ft_pa(list);
-			ft_printf("pa\npa\n");
-			if (list->vflag == 1)
-				ft_print_stacks(list);
-		}
-		sleep(5);
-	}
-	return (0);
-}
+// int ft_get_a_sorted(t_arrlist *list)
+// {
+// 	if (list->arr_a[0] > list->arr_a[1])
+// 		ft_sa(list);
+// 	ft_pa(list);
+// 	while (ft_sorted(list) != 0)
+// 	{
+// 		if (list->arr_a[0] > list->arr_a[1] && list->arr_b[1] > list->arr_b[0])
+// 			ft_ss(list);
+// 		if (list->arr_a[0] > list->arr_a[1])
+// 			ft_sa(list);
+// 		if (list->arr_b[1] > list->arr_b[0])
+// 			ft_sb(list);
+// 		if (list->arr_a[0] < list->arr_b[0] && list->len_b > 1)
+// 		{
+// 			ft_printf("we go in pa ra pb rra\n");
+// 			ft_pa(list);
+// 			ft_rra(list);
+// 			ft_pb(list);
+// 			ft_ra(list);
+// 			if (list->arr_a[0] > list->arr_a[1] && list->arr_b[1] > list->arr_b[0])
+// 				ft_ss(list);
+// 			if (list->arr_a[0] > list->arr_a[1])
+// 				ft_sa(list);
+// 			if (list->arr_b[1] > list->arr_b[0])
+// 				ft_sb(list);
+// 		}
+// 		if (list->arr_a[1] < list->arr_b[0])
+// 		{
+// 			ft_ra(list);
+// 			ft_pb(list);
+// 			ft_rra(list);
+// 		}
+// 		if (list->arr_a[0] > list->arr_b[0])
+// 		{
+// 			ft_pa(list);
+// 			ft_pa(list);
+// 		}
+// 		if (list->len_b == 1 && list->arr_b[0] > list->arr_a[0])
+// 		{
+// 			ft_pa(list);
+// 			ft_sa(list);
+// 		}
+// 	}
+// 	return (0);
+// }
 
-int		ft_toa_and_rotate(t_arrlist *list, int middle)
-{
-	if (list->arr_a[0] < middle)
-	{
-		ft_printf("pb\n");
-		ft_pb(list);
-	}
-	if (list->arr_a[1] < middle)
-	{
-		ft_ra(list);
-		ft_pb(list);
-		ft_printf("ra\npb\n");
-	}
-	ft_get_a_sorted(list);
-	return (0);
-}
+// int		ft_toa_and_rotate(t_arrlist *list, int middle)
+// {
+// 	if (list->arr_a[0] < middle && list->len_a > 2)
+// 		ft_pb(list);
+// 	if (list->arr_a[1] < middle && list->len_a > 2)
+// 	{
+// 		ft_ra(list);
+// 		ft_pb(list);
+// 	}
+// 	ft_get_a_sorted(list);
+// 	return (0);
+// }
 
-static void ft_find_smallest(t_arrlist *list)
-{
-	int i;
-	int j;
+// void	ft_sorter(t_arrlist *list, int middle)
+// {
+// 	int i;
+// 	int ret;
 
-	i = 0;
-	j = 1;
-	while (j < list->len_a - 1)
-	{
-		if (list->arr_a[i] > list->arr_a[j])
-			i = j;
-		j++;
-	}
-	if (i == 1)
-		ft_rra(list);
-	if (i == 2)
-		ft_ra(list);
-	ft_pb(list);
-}
-
-void	ft_sorter(t_arrlist *list, int middle)
-{
-	int i;
-	int ret;
-
-	i = 0;
-	//ft_printf("sorter\n");
-	ret = ft_sorted(list);
-	while (ret != 0)
-	{
-		//ft_printf("This is middle:%i && this is list->arr_a[0]: %i\n", middle,  list->arr_a[0]);
-		if (list->len_a == 2)
-		{
-			break;
-			// if (list->arr_a[0] > list->arr_a[1])
-			// 	ft_sa(list);
-			// ft_pa(list);
-			// ft_pa(list);
-			// if (list->arr_a[0] > list->arr_a[1] && list->arr_b[1] > list->arr_b[0])
-			// 	ft_ss(list);
-			// if (list->arr_a[0] > list->arr_a[1])
-			// 	ft_sa(list);
-			// if (list->arr_b[1] > list->arr_b[0])
-			// 	ft_sb(list);
-		}
-		else if (list->arr_a[0] <= middle)
-			ft_tob_and_rotate(list, middle, 1);
-		else if (list->arr_a[0] > middle)
-		{
-			ret = ft_tob_and_rotate(list, middle, 0);
-			if (list->len_a == 3)
-				ft_find_smallest(list);
-			if (ret == -1 || (ret == 0 && ft_nonumber(list, middle) == 0))
-				middle = ft_bubblesort(list);
-		}
-		ret = ft_sorted(list);
-	}
-	ft_toa_and_rotate(list, middle);
-}
+// 	i = 0;
+// 	//ft_printf("sorter\n");
+// 	ret = ft_sorted(list);
+// 	while (ret != 0)
+// 	{
+// 		//ft_printf("This is middle:%i && this is list->arr_a[0]: %i\n", middle,  list->arr_a[0]);
+// 		if (list->len_a == 2)
+// 			break ;
+// 		else if (list->arr_a[0] <= middle)
+// 			ft_tob_and_rotate(list, middle, 1);
+// 		else if (list->arr_a[0] > middle)
+// 		{
+// 			if (list->len_a == 3)
+// 				ft_find_smallest(list);
+// 			ret = ft_tob_and_rotate(list, middle, 0);
+// 			if (ret == -1 || (ret == 0 && ft_nonumber(list, middle) == 0))
+// 				middle = ft_bubblesort(list);
+// 		}
+// 		ret = ft_sorted(list);
+// 	}
+// 	ft_toa_and_rotate(list, middle);
+// }
 
 void	ft_list_copy(t_arrlist *list, t_arrlist *copy)
 {
@@ -357,7 +314,6 @@ int		ft_bubblesort(t_arrlist *list_og)
 	int			middle;
 
 	list = malloc(sizeof(t_arrlist));
-	// list = list_og;
 	ft_list_copy(list_og, list);
 	i = 0;
 	while (ft_bubble_sorted_a(list) != 0)

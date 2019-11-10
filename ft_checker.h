@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:38 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/23 18:11:05 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/04 14:58:35 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ typedef struct		s_arrlist
 	short	vflag;
 	short	len_a;
 	short	len_b;
+	short	prog;
 }					t_arrlist;
 
 int					ft_valid_input(char *str);
 int					ft_check_input(char **argv);
 int					ft_store_input(char **argv, t_arrlist *arlst);
 void				ft_print_int_array(int *array, int len);
-void				ft_print_two_int_array(int *array1, int *array2, int len);
 void				ft_print_stacks(t_arrlist *list);
 void				ft_set_int_array_list(t_arrlist *list, int len);
 int					ft_read_input(t_arrlist *list);

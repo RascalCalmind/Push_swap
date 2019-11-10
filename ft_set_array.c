@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 17:44:42 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/12 20:10:25 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/04 14:59:30 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_set_int_array_list(t_arrlist *list, int len)
 	}
 	list->len_a = len;
 	list->len_b = 0;
+	list->prog = 0;
 }
 
 void	ft_free_arrlist(t_arrlist *list)

@@ -6,7 +6,7 @@
 #    By: lhageman <lhageman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/26 17:41:45 by lhageman       #+#    #+#                 #
-#    Updated: 2019/10/23 16:23:58 by lhageman      ########   odam.nl          #
+#    Updated: 2019/11/10 17:47:25 by lhageman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,9 @@ SRCPS	=	ft_push_swap.c \
 			ft_rotate.c \
 			ft_reverse_rotate.c \
 			ft_print_int_array.c \
-			ft_bubblesort.c
+			ft_bubblesort.c \
+			ft_sorting.c \
+			ft_sort_bigger.c
 
 OBJC	= $(SRCC:%.c=%.o)
 OBJPS	= $(SRCPS:%.c=%.o)
