@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:43 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/11 15:33:05 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/11 20:48:44 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		ft_sort(t_arrlist *list);
 int		ft_bubblesort(t_arrlist *list_og);
 int		ft_sa(t_arrlist *list);
 int		ft_sb(t_arrlist *list);
+int		ft_ss(t_arrlist *list);
 int		ft_pa(t_arrlist *list);
 int		ft_pb(t_arrlist *list);
 int		ft_ra(t_arrlist *list);
@@ -33,5 +34,6 @@ void	ft_sort_three(t_arrlist *list);
 int     ft_sort_back(t_arrlist *list);
 void	ft_list_copy(t_arrlist *list, t_arrlist *copy);
 void	ft_print_stacks_compare(t_arrlist *start, t_arrlist *finish);
+int		ft_a_sorted(t_arrlist *list);
 
 #endif

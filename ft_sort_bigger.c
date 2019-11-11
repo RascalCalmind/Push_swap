@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 17:43:47 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/11 14:56:48 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/11 20:40:42 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,11 @@ int		ft_which_way(t_arrlist *list, int middle)
 int		ft_rot_find(t_arrlist *list, int middle)
 {
 	int turn;
+	int check;
 
+	check = ft_middles(list, middle);
+	if (check == 0)
+		middle = ft_bubblesort(list);
 	turn = ft_which_way(list, middle);
 	while (turn != 0)
 	{
