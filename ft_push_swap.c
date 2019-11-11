@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:41 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/04 14:59:55 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/11 15:40:51 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		main(int argc, char **argv)
 {
 	int			ret;
 	t_arrlist	*arlst;
+	t_arrlist	*start_list;
 
 	if (argc > 1)
 	{
@@ -34,12 +35,20 @@ int		main(int argc, char **argv)
 			ft_free_arrlist(arlst);
 			return (-1);
 		}
-		ret = ft_sort(arlst);
-		if (ret == -1)
+		start_list = malloc(sizeof(t_arrlist));
+		if (!start_list)
 		{
 			ft_free_arrlist(arlst);
-			return (-1);
 		}
+		ft_list_copy(arlst, start_list);
+		ret = ft_sort(arlst);
+		// if (ret == -1)
+		// {
+		// 	ft_free_arrlist(arlst);
+		// 	return (-1);
+		// }
+		ft_print_stacks_compare(start_list, arlst);
+		ft_free_arrlist(start_list);
 		ft_free_arrlist(arlst);
 	}
 	return (0);

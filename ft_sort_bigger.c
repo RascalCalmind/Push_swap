@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 17:43:47 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/10 22:40:00 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/11 14:56:48 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ft_which_way(t_arrlist *list, int middle)
 	}
 	if (min == max)
 		return (min);
-	return (0);	
+	return (0);
 }
 
 int		ft_rot_find(t_arrlist *list, int middle)
@@ -90,19 +90,25 @@ int		ft_bubble_to_b(t_arrlist *list, int middle)
 {
 	int check;
 	int sort_a;
-	int i;
 
-	i = 0;
 	check = ft_middles(list, middle);
 	sort_a = ft_a_sorted(list);
 	while (check != 0 && sort_a != 0)
 	{
-		if (list->arr_a[i] < middle)
-			ft_pb(list);
-		if (list->arr_a[i] >= middle)
-			ft_rot_find(list, middle);
 		if (list->len_a == 3)
 			ft_sort_three(list);
+		sort_a = ft_a_sorted(list);
+		if (sort_a == 0)
+			break ;
+		if (list->arr_a[0] < middle)
+			ft_pb(list);
+		if (list->len_a == 3)
+			ft_sort_three(list);
+		sort_a = ft_a_sorted(list);
+		if (sort_a == 0)
+			break ;
+		if (list->arr_a[0] >= middle)
+			ft_rot_find(list, middle);
 		check = ft_middles(list, middle);
 		sort_a = ft_a_sorted(list);
 	}
