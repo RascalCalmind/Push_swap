@@ -6,12 +6,35 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 21:39:17 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/11 20:47:21 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/16 18:51:33 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker.h"
 #include "ft_push_swap.h"
+
+void	ft_which_s(t_arrlist *list)
+{
+	if (list->arr_b[0] < list->arr_b[1] && list->arr_a[1] < list->arr_a[0])
+		ft_ss(list);
+	else if (list->arr_a[1] < list->arr_a[0])
+		ft_sa(list);
+	else if (list->arr_b[0] < list->arr_b[1])
+		ft_sb(list);
+}
+
+int	ft_rot_and_swap(t_arrlist *list, int j)
+{
+	ft_ra(list);
+	ft_which_s(list);
+	return (j - 1);
+}
+
+int		ft_rrot_and_swap(t_arrlist *list, int k)
+{
+	ft_rra(list);
+	return (k - 1);
+}
 
 void ft_resort(t_arrlist *list)
 {
@@ -25,23 +48,16 @@ void ft_resort(t_arrlist *list)
 	while (list->arr_a[i + 1] < list->arr_a[i])
 	{
 		if (i < 1)
-			ft_sa(list);
+			ft_which_s(list);
 		if (i >= 1)
 		{
 			j = i;
 			k = i;
-			ft_sa(list);
+			ft_which_s(list);
 			while (j > 0)
-			{
-				ft_ra(list);
-				ft_sa(list);
-				j -= 1;
-			}
+				j = ft_rot_and_swap(list, j);
 			while (k > 0)
-			{
-				ft_rra(list);
-				k -= 1;
-			}
+				k = ft_rrot_and_swap(list, k);
 		}
 		i += 1;
 	}
@@ -56,13 +72,7 @@ int	ft_sort_back(t_arrlist *list)
 	ret = ft_sorted(list);
 	while (ret != 0)
 	{
-		// a_sort = ft_a_sorted(list);
-		// if (a_sort != 0)
-		// 	ft_resort(list);
-		if (list->arr_a[0] > list->arr_a[1] && list->arr_b[0] < list->arr_b[1])
-			ft_ss(list);
-		else if (list->arr_b[0] < list->arr_b[1])
-			ft_sb(list);
+		ft_which_s(list);
 		if (list->arr_a[0] < list->arr_a[1])
 			ft_pa(list);
 		ft_resort(list);
