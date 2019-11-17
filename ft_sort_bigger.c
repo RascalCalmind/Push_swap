@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 17:43:47 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/16 17:53:05 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/17 20:54:55 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,27 @@ int		ft_which_way(t_arrlist *list, int middle)
 	return (0);
 }
 
+int		ft_which_rotate(t_arrlist *list, int turn)
+{
+	if (turn > 0)
+	{
+		if (list->arr_b[0] < list->arr_b[list->len_b - 1])
+			ft_rr(list);
+		else
+			ft_ra(list);
+		return (turn - 1);
+	}
+	if (turn < 0)
+	{
+		if (list->arr_b[list->len_b - 1] > list->arr_b[0])
+			ft_rrr(list);
+		else
+			ft_rra(list);
+		return (turn + 1);
+	}
+	return (0);
+}
+
 int		ft_rot_find(t_arrlist *list, int middle)
 {
 	int turn;
@@ -121,16 +142,7 @@ int		ft_rot_find(t_arrlist *list, int middle)
 	turn = ft_which_way(list, middle);
 	while (turn != 0)
 	{
-		if (turn > 0)
-		{
-			ft_ra(list);
-			turn -= 1;
-		}
-		if (turn < 0)
-		{
-			ft_rra(list);
-			turn += 1;
-		}
+		turn = ft_which_rotate(list, turn);
 	}
 	return (0);
 }
