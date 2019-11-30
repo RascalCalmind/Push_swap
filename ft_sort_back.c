@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 21:39:17 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/16 18:51:33 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/30 16:33:58 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ int	ft_sort_back(t_arrlist *list)
 	while (ret != 0)
 	{
 		ft_which_s(list);
-		if (list->arr_a[0] < list->arr_a[1])
-			ft_pa(list);
+		ft_find_bignum(list);
+		// if (list->arr_a[0] < list->arr_a[1])
+		// if (list->arr_a[0] < list->arr_a[1])
+		// 	ft_pa(list);
 		ft_resort(list);
 		ret = ft_sorted(list);
 	}

@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 17:43:47 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/17 20:54:55 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/21 11:43:21 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ int		ft_middles(t_arrlist *list, int middle)
 // 	return (min);
 // }
 
-int		ft_find_smaller(t_arrlist *list, int min, int max)
-{
-	if (list->arr_a[min] < list->arr_a[max])
-		return (min);
-	return (max);
-}
+// int		ft_find_smaller(t_arrlist *list, int min, int max)
+// {
+// 	if (list->arr_a[min + 1] < list->arr_a[max])
+// 		return (min + 1);
+// 	return (max);
+// }
 
 int		ft_which_way(t_arrlist *list, int middle)
 {
@@ -87,16 +87,20 @@ int		ft_which_way(t_arrlist *list, int middle)
 		{
 			// ft_printf("min:[%i], middle:[%i]\n", min, middle);
 			// num = ft_find_smaller(list, min, max);
-			// // ft_printf("min num: %i\n", num);
+			// // // ft_printf("min num: %i\n", num);
 			// return (num);
+			if (list->arr_a[max] < list->arr_a[min])
+				return ((list->len_a - max) * -1);
 			return (min);
 		}
 		else if (list->arr_a[max] < middle)
 		{
 			// // ft_printf("max: %i, middle:[%i]\n", max, middle);
 			// num = (list->len_a - ft_find_smaller(list, min, max)) * -1;
-			// // ft_printf("max num: %i\n", num);
+			// // // ft_printf("max num: %i\n", num);
 			// return (num);
+			// if (list->arr_a[max] > list->arr_a[min + 1])
+			// 	return (min + 1);
 			return ((list->len_a - max) * -1);
 		}
 		else
@@ -147,6 +151,14 @@ int		ft_rot_find(t_arrlist *list, int middle)
 	return (0);
 }
 
+static void	ft_which_s(t_arrlist *list)
+{
+	if (list->arr_a[0] < list->arr_a[1] && list->arr_b[0] < list->arr_b[1])
+		ft_ss(list);
+	if (list->arr_b[0] < list->arr_b[1])
+		ft_sb(list);
+}
+
 int		ft_bubble_to_b(t_arrlist *list, int middle)
 {
 	int check;
@@ -163,6 +175,7 @@ int		ft_bubble_to_b(t_arrlist *list, int middle)
 			break ;
 		if (list->arr_a[0] < middle)
 			ft_pb(list);
+		ft_which_s(list);
 		if (list->len_a == 3)
 			ft_sort_three(list);
 		sort_a = ft_a_sorted(list);

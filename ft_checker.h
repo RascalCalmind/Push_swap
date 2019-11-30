@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:38 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/04 14:58:35 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/30 15:56:47 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,26 @@
 
 typedef struct		s_arrlist
 {
-	int		*arr_a;
-	int		*arr_b;
-	short	vflag;
-	short	len_a;
-	short	len_b;
-	short	prog;
+	int				*arr_a;
+	int				*arr_b;
+	short			vflag;
+	short			fflag;
+	short			len_a;
+	short			len_b;
+	short			prog;
+	// t_fflag_list 	f_list;
 }					t_arrlist;
+
+typedef struct		s_fflag_list
+{
+	int		fd;
+	char	**arr;
+}					t_fflag_list;
 
 int					ft_valid_input(char *str);
 int					ft_check_input(char **argv);
 int					ft_store_input(char **argv, t_arrlist *arlst);
-void				ft_print_int_array(int *array, int len);
+//void				ft_print_int_array(int *array, int len);
 void				ft_print_stacks(t_arrlist *list);
 void				ft_set_int_array_list(t_arrlist *list, int len);
 int					ft_read_input(t_arrlist *list);
@@ -44,5 +52,7 @@ void				ft_switch_down(int i, int len, int *arr);
 void				ft_switch_up(int *arr, int len);
 void				ft_check_stack(t_arrlist *list);
 void				ft_free_arrlist(t_arrlist *list);
+int					ft_open_file(char *file, char *numbers, char **arr);
+
 
 #endif

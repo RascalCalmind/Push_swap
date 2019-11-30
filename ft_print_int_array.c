@@ -6,11 +6,59 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 17:14:36 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/11 15:40:29 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/22 17:00:24 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker.h"
+
+int			ft_intarrlen(int *arr)
+{
+	int i;
+
+	i = 0;
+	while (arr[i])
+		i += 1;
+	return (i);
+}
+
+void		ft_print_int_array(int *arr)
+{
+	int i;
+	int len;
+
+	i = 0;
+	len = ft_intarrlen(arr);
+	while (i < len)
+	{
+		ft_printf("%i\n", arr[i]);
+		i += 1;
+	}
+}
+
+int			ft_chararrlen(char **arr)
+{
+	int i;
+
+	i = 0;
+	while (arr[i])
+		i += 1;
+	return (i);
+}
+
+void		ft_print_char_array(char **arr)
+{
+	int i;
+	int len;
+
+	i = 0;
+	len = ft_chararrlen(arr);
+	while (i < len)
+	{
+		ft_printf("%s\n", arr[i]);
+		i += 1;
+	}
+}
 
 int			ft_len_stack(int len_a, int len_b)
 {

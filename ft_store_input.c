@@ -6,11 +6,12 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 16:48:59 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/11 18:08:07 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/24 20:09:43 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker.h"
+#include "ft_push_swap.h"
 
 int		ft_find_doubles(t_arrlist *list)
 {
@@ -83,13 +84,8 @@ int		ft_allocate_store(t_arrlist *arlst, char **argv, int len)
 	return (0);
 }
 
-int		ft_store_input(char **argv, t_arrlist *arlst)
+int		ft_flag_check(char **argv, t_arrlist *arlst, int len)
 {
-	int			len;
-
-	len = ft_calc_len(argv);
-	if (len < 1)
-		return (-1);
 	if (ft_strcmp(argv[1], "-v") == 0)
 	{
 		len--;
@@ -97,6 +93,62 @@ int		ft_store_input(char **argv, t_arrlist *arlst)
 	}
 	else
 		arlst->vflag = 0;
+	if (ft_strcmp(argv[1], "-f") == 0)
+	{
+		arlst->fflag = 1;
+		len--;
+	}
+	else
+		arlst->fflag = 0;
+	return (len);
+}
+
+int		ft_store_file(char **argv, t_arrlist *arlst, int len)
+{
+	int		ret;
+	char	*numbers;
+	char	**arr;
+
+	numbers = malloc(sizeof(char) * 10 + 1);
+	ft_printf("in store file: arg:[%s, %s]\tlen:[%i]\n", argv[1], argv[2], len);
+	if (len > 2)
+	{
+		ft_free_arrlist(arlst);
+		ft_dprintf(2, "Error\n");
+		return (-1);
+	}
+	arr = NULL;
+	ret = ft_open_file(argv[2], numbers, arr);
+	ft_printf("[%i][%s]\n", ret, argv[2]);
+	if (ret == -1)
+		return (-1);
+	//put numbers into the a_stack
+	if (arr == NULL)
+		ft_printf("ohno\n");
+	ft_print_char_array(arr);
+	ft_allocate_store(arlst, arr, ret);
+	arlst->len_a = ret;
+	if (ft_find_doubles(arlst) == -1)
+	{
+		ft_free_arrlist(arlst);
+		free (arr);
+		ft_dprintf(2, "Error\n");
+		return (-1);
+	}
+	//if (arlst->vflag == 1)
+	ft_print_stacks(arlst);
+	ft_print_char_array(arr);
+	free(numbers);
+	free(arr);
+	// close(fd);
+	return (0);
+	// read file and store array just like ft_check_file and 
+	// write something similar as allocate store to store and
+	// check it in the intiger arr in the list for doubles etc.
+}
+
+int		ft_store_list(char **argv, t_arrlist *arlst, int len)
+{
 	if (ft_allocate_store(arlst, argv, len) == -1)
 		return (-1);
 	arlst->len_a = ft_calc_len(argv);
@@ -110,5 +162,25 @@ int		ft_store_input(char **argv, t_arrlist *arlst)
 	}
 	if (arlst->vflag == 1)
 		ft_print_stacks(arlst);
+	return (0);
+}
+
+int		ft_store_input(char **argv, t_arrlist *arlst)
+{
+	int			len;
+	int			ret;
+
+	ret = 0;
+	len = ft_calc_len(argv);
+	ft_printf("we go into ft_store_input\n");
+	if (len < 1)
+		return (-1);
+	len = ft_flag_check(argv, arlst, len);
+	if (arlst->fflag == 1)
+		ret = ft_store_file(argv, arlst, len);
+	else
+		ret = ft_store_list(argv, arlst, len);
+	if (ret == -1)
+		return (-1);
 	return (0);
 }

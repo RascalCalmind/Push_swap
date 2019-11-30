@@ -6,11 +6,12 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 14:04:11 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/07 14:57:29 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/22 19:06:27 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker.h"
+#include "ft_push_swap.h"
 
 int		ft_check_int(char *str)
 {
@@ -76,6 +77,14 @@ int		ft_check_input(char **argv)
 	i = 1;
 	if (ft_strcmp(argv[i], "-v") == 0)
 		i++;
+	if (ft_strcmp(argv[1], "-f") == 0)
+	{
+		i = ft_check_file(argv[2]);
+		if (i == -1)
+			return (-1);
+		else
+			return (0);
+	}
 	while (argv[i])
 	{
 		if (ft_valid_input(argv[i]) == -1)

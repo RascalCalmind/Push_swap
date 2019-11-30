@@ -6,7 +6,7 @@
 #    By: lhageman <lhageman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/07/24 22:50:24 by lhageman       #+#    #+#                 #
-#    Updated: 2019/09/28 22:11:04 by lhageman      ########   odam.nl          #
+#    Updated: 2019/11/22 16:53:09 by lhageman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,16 @@ SRCC =	ft_itoa.c \
 	ft_time2.c \
 	ft_time3.c \
 	ft_strcmp.c \
-	ft_strclr.c
+	ft_strclr.c \
+	get_next_line.c \
+	ft_strsplit.c \
+	ft_strsub.c \
+	ft_strclen.c \
+	ft_glstnew.c \
+	ft_memalloc.c \
+	ft_memcpy.c \
+	ft_strjoin.c \
+	ft_strchr.c
 
 SRCO	= $(SRCC:%.c=%.o)
 TRASH	= $(SRCC:%.c=%.c~)

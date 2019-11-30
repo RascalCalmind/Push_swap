@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 13:45:02 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/10 18:37:52 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/20 13:14:08 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ void		ft_sort_three(t_arrlist *list)
 		if (list->arr_a[i + 1] > list->arr_a[i] && list->arr_a[i + 1]
 			> list->arr_a[big])
 			big = i + 1;
+		if (list->arr_a[i + 1] < list->arr_a[i] && list->arr_a[i + 1]
+			< list->arr_a[small])
+			small = i + 1;
 		i += 1;
 	}
 	ft_arrange_three(list, small, big);
@@ -106,4 +109,5 @@ void		ft_sorter(t_arrlist *list, int middle)
 		}
 		middle = 0;
 	}
+	
 }
