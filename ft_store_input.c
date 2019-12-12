@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 16:48:59 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/24 20:09:43 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/01 15:36:26 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,6 @@ int		ft_store_input(char **argv, t_arrlist *arlst)
 
 	ret = 0;
 	len = ft_calc_len(argv);
-	ft_printf("we go into ft_store_input\n");
 	if (len < 1)
 		return (-1);
 	len = ft_flag_check(argv, arlst, len);
@@ -182,5 +181,11 @@ int		ft_store_input(char **argv, t_arrlist *arlst)
 		ret = ft_store_list(argv, arlst, len);
 	if (ret == -1)
 		return (-1);
+	arlst->total_len = arlst->len_a;
 	return (0);
 }
+
+	// while (middle > 60)
+	// {
+	// 	middle /= 2;
+	// }

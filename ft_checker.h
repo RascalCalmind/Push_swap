@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:38 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/30 15:56:47 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/11/30 20:15:50 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_arrlist
 	short			len_a;
 	short			len_b;
 	short			prog;
+	short			total_len;
 	// t_fflag_list 	f_list;
 }					t_arrlist;
 

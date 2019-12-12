@@ -6,7 +6,7 @@
 #    By: lhageman <lhageman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/26 17:41:45 by lhageman       #+#    #+#                 #
-#    Updated: 2019/11/30 15:56:10 by lhageman      ########   odam.nl          #
+#    Updated: 2019/12/01 15:47:14 by lhageman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAMEPS	= push_swap.a
 LIBFT	= libft/libft.a
 NAMES = $(NAMEC) $(NAMEPS)
 
-CCC		= gcc -c -Wall -Werror -Wextra
-CCO		= gcc -Wall -Werror -Wextra -o
+CCC		= gcc -gc -Wall -Werror -Wextra
+CCO		= gcc -g -Wall -Werror -Wextra -o
 
 SRCC	=	ft_checker.c \
 			ft_valid_input.c \

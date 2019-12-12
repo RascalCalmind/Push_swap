@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 17:43:47 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/21 11:43:21 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/01 15:44:41 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int		ft_which_rotate(t_arrlist *list, int turn)
 {
 	if (turn > 0)
 	{
-		if (list->arr_b[0] < list->arr_b[list->len_b - 1])
+		if (list->len_b >= 2 && list->arr_b[0] < list->arr_b[list->len_b - 1])
 			ft_rr(list);
 		else
 			ft_ra(list);
@@ -126,7 +126,7 @@ int		ft_which_rotate(t_arrlist *list, int turn)
 	}
 	if (turn < 0)
 	{
-		if (list->arr_b[list->len_b - 1] > list->arr_b[0])
+		if (list->len_b >= 2 && list->arr_b[list->len_b - 1] > list->arr_b[0])
 			ft_rrr(list);
 		else
 			ft_rra(list);

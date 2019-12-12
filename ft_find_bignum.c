@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/30 15:28:44 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/30 19:09:08 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/01 16:16:06 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_list_copy_b(t_arrlist *list, t_arrlist *copy)
 	copy->len_b = list->len_b;
 	copy->arr_a = malloc(sizeof(int) * (list->len_a + list->len_b));
 	copy->arr_b = malloc(sizeof(int) * (list->len_a + list->len_b));
+	copy->total_len = list->total_len;
 	while (i < list->len_a)
 	{
 		copy->arr_a[i] = list->arr_a[i];
@@ -77,7 +78,7 @@ void		ft_bubblesort_b(t_arrlist *list, t_arrlist *copy_sorted)
 	}
 }
 
-int		ft_which_way_b(int find, t_arrlist *list)
+int		ft_which_way_b(int find, int backup, t_arrlist *list)
 {
 	int min;
 	int max;
@@ -88,9 +89,9 @@ int		ft_which_way_b(int find, t_arrlist *list)
 	num = 0;
 	while (min != max && min <= max)
 	{
-		if (list->arr_b[min] == find)
+		if (list->arr_b[min] == find || (list->arr_b[min] == backup && list->total_len > 250))
 			return (min);
-		else if (list->arr_b[max] == find)
+		else if (list->arr_b[max] == find || (list->arr_b[max] == backup && list->total_len > 250))
 			return ((list->len_b - max) * -1);
 		else
 		{
@@ -138,7 +139,10 @@ void	ft_find_bignum(t_arrlist *list)
 		return ;
 	}
 	pos = copy_sorted->len_b - 1;
-	rot = ft_which_way_b(copy_sorted->arr_b[pos], list);
+	if (pos > 1)
+		rot = ft_which_way_b(copy_sorted->arr_b[pos], copy_sorted->arr_b[pos - 1], list);
+	else
+		rot = 0;
 	ft_rot_and_push(list, rot);
 	// while (pos >= 0)
 	// {

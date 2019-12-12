@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/03 14:53:45 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/10 15:38:02 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/01 15:51:38 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,12 @@ void	ft_switch_down(int i, int len, int *arr)
 
 void	ft_switch_up(int *arr, int len)
 {
-	int j;
-
-	j = 0;
-	while (j < len)
-		j++;
-	while (j >= 0)
+	len -= 1;
+	while (len >= 0)
 	{
-		arr[j + 1] = arr[j];
-		arr[j] = 0;
-		j--;
+		arr[len + 1] = arr[len];
+		//arr[j] = 0;
+		len--;
 	}
 }
 
