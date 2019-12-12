@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:38 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/30 20:15:50 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/12 17:11:53 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct		s_arrlist
 typedef struct		s_fflag_list
 {
 	int		fd;
+	int		ret;
 	char	**arr;
 }					t_fflag_list;
 
@@ -53,7 +54,9 @@ void				ft_switch_down(int i, int len, int *arr);
 void				ft_switch_up(int *arr, int len);
 void				ft_check_stack(t_arrlist *list);
 void				ft_free_arrlist(t_arrlist *list);
-int					ft_open_file(char *file, char *numbers, char **arr);
+int					ft_open_file(char *file, char *numbers, char **arr, t_fflag_list *flist);
+void				ft_set_flist(t_fflag_list *list);
+void				ft_free_flist(t_fflag_list *list);
 
 
 #endif

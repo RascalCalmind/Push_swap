@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/03 14:53:45 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/01 15:51:38 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/12 16:25:22 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_switch_up(int *arr, int len)
 	while (len >= 0)
 	{
 		arr[len + 1] = arr[len];
-		//arr[j] = 0;
 		len--;
 	}
 }

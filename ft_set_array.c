@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 17:44:42 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/04 14:59:30 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/12 17:12:19 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,20 @@ void	ft_free_arrlist(t_arrlist *list)
 		free(list);
 		list = NULL;
 	}
+}
+
+void	ft_set_flist(t_fflag_list *list)
+{
+	char **arr;
+
+	arr = NULL;
+	list->fd = 0;
+	list->arr = arr;
+	list->ret = 0;
+}
+
+void	ft_free_flist(t_fflag_list *list)
+{
+	free(list->arr);
+	free(list);
 }

@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 16:48:59 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/01 15:36:26 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/12 17:54:59 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,32 @@ int		ft_store_int(char *str)
 
 	arr_value = ft_atoi(str);
 	return (arr_value);
+}
+
+int		ft_allocate_fstore(t_arrlist *arlst, t_fflag_list *flist)
+{
+	int len;
+
+	len = flist->ret;
+	arlst->arr_a = malloc(sizeof(int) * len + 1);
+	if (!arlst->arr_a)
+	{
+		ft_free_arrlist(arlst);
+		return (-1);
+	}
+	arlst->arr_b = malloc(sizeof(int) * len + 1);
+	if (!arlst->arr_b)
+	{
+		ft_free_arrlist(arlst);
+		return (-1);
+	}
+	ft_set_int_array_list(arlst, len);
+	while (len > 0)
+	{
+		arlst->arr_a[len - 1] = ft_store_int(flist->arr[len - 1]);
+		len -= 1;
+	}
+	return (0);
 }
 
 int		ft_allocate_store(t_arrlist *arlst, char **argv, int len)
@@ -105,10 +131,15 @@ int		ft_flag_check(char **argv, t_arrlist *arlst, int len)
 
 int		ft_store_file(char **argv, t_arrlist *arlst, int len)
 {
-	int		ret;
-	char	*numbers;
-	char	**arr;
+	int				ret;
+	char			*numbers;
+	char			**arr;
+	t_fflag_list	*flist;
 
+	flist = malloc(sizeof(t_fflag_list));
+	ft_set_flist(flist);
+	if (flist == NULL)
+		return (-1);
 	numbers = malloc(sizeof(char) * 10 + 1);
 	ft_printf("in store file: arg:[%s, %s]\tlen:[%i]\n", argv[1], argv[2], len);
 	if (len > 2)
@@ -118,29 +149,30 @@ int		ft_store_file(char **argv, t_arrlist *arlst, int len)
 		return (-1);
 	}
 	arr = NULL;
-	ret = ft_open_file(argv[2], numbers, arr);
+	ret = ft_open_file(argv[2], numbers, arr, flist);
 	ft_printf("[%i][%s]\n", ret, argv[2]);
 	if (ret == -1)
 		return (-1);
-	//put numbers into the a_stack
-	if (arr == NULL)
+	if (flist->arr == NULL)
 		ft_printf("ohno\n");
-	ft_print_char_array(arr);
-	ft_allocate_store(arlst, arr, ret);
-	arlst->len_a = ret;
+	ft_print_char_array(flist->arr);
+	ft_printf("this is ret after allocatestore:%i\n", flist->ret);
+	//ft_allocate_store(arlst, flist->arr, flist->ret);
+	ft_allocate_fstore(arlst, flist);
+	ft_printf("this is ret after allocatestore:%i\n", flist->ret);
+	arlst->len_a = flist->ret;
 	if (ft_find_doubles(arlst) == -1)
 	{
 		ft_free_arrlist(arlst);
-		free (arr);
+		free (flist->arr);
 		ft_dprintf(2, "Error\n");
 		return (-1);
 	}
-	//if (arlst->vflag == 1)
 	ft_print_stacks(arlst);
-	ft_print_char_array(arr);
+	ft_print_char_array(flist->arr);
 	free(numbers);
-	free(arr);
-	// close(fd);
+	free(flist->arr);
+	// close(flist->fd);
 	return (0);
 	// read file and store array just like ft_check_file and 
 	// write something similar as allocate store to store and
@@ -184,8 +216,3 @@ int		ft_store_input(char **argv, t_arrlist *arlst)
 	arlst->total_len = arlst->len_a;
 	return (0);
 }
-
-	// while (middle > 60)
-	// {
-	// 	middle /= 2;
-	// }

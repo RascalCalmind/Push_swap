@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/30 15:28:44 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/01 16:16:06 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/12 16:24:53 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,6 @@ int		ft_which_way_b(int find, int backup, t_arrlist *list)
 
 void	ft_rot_and_push(t_arrlist *list, int rot)
 {
-	// if (rot > 0)
-	// 	rot += 1;
-	// if (rot < 0)
-	// 	rot -= 1;
 	while (rot > 0)
 	{
 		ft_rb(list);
@@ -131,7 +127,6 @@ void	ft_find_bignum(t_arrlist *list)
 	int			pos;
 
 	copy_sorted = malloc(sizeof(t_arrlist));
-	// ft_list_copy(list, copy_sorted);
 	ft_bubblesort_b(list, copy_sorted);
 	if (copy_sorted == NULL)
 	{
@@ -144,16 +139,6 @@ void	ft_find_bignum(t_arrlist *list)
 	else
 		rot = 0;
 	ft_rot_and_push(list, rot);
-	// while (pos >= 0)
-	// {
-	// 	ft_printf("find:[%i]\n", copy_sorted->arr_b[pos]);
-	// 	ft_print_stacks(list);
-	// 	rot = ft_which_way_b(copy_sorted->arr_b[pos], list);
-	// 	ft_printf("rot: [%i]\n");
-	// 	ft_rot_and_push(list, rot);
-	// 	ft_print_stacks(list);
-	// 	pos -= 1;
-	// }
 	free (copy_sorted);
 	copy_sorted = NULL;
 }
