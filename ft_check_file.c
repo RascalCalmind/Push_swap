@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 15:41:29 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 17:36:11 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/12 18:07:51 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		ft_copy_arr_to_flist(char **arr, t_fflag_list *flist)
 	}
 	if (i > 0 && flist->arr != NULL)
 		return (0);
-	ft_printf("i in ft_copy_arr_to_flist:%i\n", i);
 	return (-1);
 }
 
@@ -44,8 +43,6 @@ int		ft_make_array(char *str, char **arr, t_fflag_list *flist)
 		ft_dprintf(2, "Error\n");
 		return (-1);
 	}
-	ft_printf("char arr:\n");
-	ft_print_char_array(arr);
 	while (arr[i])
 	{
 		if (ft_valid_input(arr[i]) == -1)
@@ -56,8 +53,6 @@ int		ft_make_array(char *str, char **arr, t_fflag_list *flist)
 		}
 		i++;
 	}
-	ft_printf("this is ret in ft_make_array:%i\n", i);
-	// flist->fd = fd;
 	flist->ret = i;
 	i = ft_copy_arr_to_flist(arr, flist);
 	return (i);
@@ -70,14 +65,12 @@ int		ft_open_file(char *file, char *numbers, char **arr, t_fflag_list *flist)
 
 	ret = 0;
 	fd = open(file, O_RDONLY);
-	ft_printf("fd:[%i]\n", fd);
 	if (fd == -1)
 	{
 		ft_dprintf(2, "Error\n");
 		return (-1);
 	}
 	ret = get_next_line(fd, &numbers);
-	ft_printf("ret:[%i]\n", ret);
 	if (ret <= 0)
 	{
 		free(numbers);
@@ -94,8 +87,6 @@ int		ft_open_file(char *file, char *numbers, char **arr, t_fflag_list *flist)
 		return (-1);
 	}
 	flist->fd = fd;
-	// ret = ft_copy_arr_to_flist(arr, flist);
-	// flist->ret = ret;
 	close(fd);
 	return (ret);
 }
