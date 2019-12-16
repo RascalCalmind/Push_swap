@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 14:04:11 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 18:15:14 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/12 19:28:59 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int		ft_valid_input(char *str)
 	return (0);
 }
 
-
 int		ft_check_input(char **argv)
 {
 	int i;
@@ -78,7 +77,8 @@ int		ft_check_input(char **argv)
 	i = 1;
 	if (ft_strcmp(argv[i], "-v") == 0)
 		i++;
-	if (ft_strcmp(argv[1], "-f") == 0 || ft_strcmp(argv[1], "-fv") == 0 || ft_strcmp(argv[1], "-vf") == 0)
+	if (ft_strcmp(argv[1], "-f") == 0 || ft_strcmp(argv[1], "-fv") == 0
+	|| ft_strcmp(argv[1], "-vf") == 0)
 	{
 		i = ft_check_file(argv[2]);
 		if (i == -1)

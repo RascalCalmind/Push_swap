@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/30 15:28:44 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 16:24:53 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/16 14:34:58 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	ft_bubble_sorted_b(t_arrlist *list)
 	return (0);
 }
 
-void	ft_list_copy_b(t_arrlist *list, t_arrlist *copy)
+void		ft_list_copy_b(t_arrlist *list, t_arrlist *copy)
 {
 	int i;
 
@@ -59,6 +59,7 @@ void	ft_list_copy_b(t_arrlist *list, t_arrlist *copy)
 		i++;
 	}
 }
+
 void		ft_bubblesort_b(t_arrlist *list, t_arrlist *copy_sorted)
 {
 	int			i;
@@ -78,7 +79,7 @@ void		ft_bubblesort_b(t_arrlist *list, t_arrlist *copy_sorted)
 	}
 }
 
-int		ft_which_way_b(int find, int backup, t_arrlist *list)
+int			ft_which_way_b(int find, int backup, t_arrlist *list)
 {
 	int min;
 	int max;
@@ -89,9 +90,11 @@ int		ft_which_way_b(int find, int backup, t_arrlist *list)
 	num = 0;
 	while (min != max && min <= max)
 	{
-		if (list->arr_b[min] == find || (list->arr_b[min] == backup && list->total_len > 250))
+		if (list->arr_b[min] == find || (list->arr_b[min] == backup
+		&& list->total_len > 250))
 			return (min);
-		else if (list->arr_b[max] == find || (list->arr_b[max] == backup && list->total_len > 250))
+		else if (list->arr_b[max] == find || (list->arr_b[max] == backup
+		&& list->total_len > 250))
 			return ((list->len_b - max) * -1);
 		else
 		{
@@ -104,7 +107,7 @@ int		ft_which_way_b(int find, int backup, t_arrlist *list)
 	return (0);
 }
 
-void	ft_rot_and_push(t_arrlist *list, int rot)
+void		ft_rot_and_push(t_arrlist *list, int rot)
 {
 	while (rot > 0)
 	{
@@ -120,7 +123,7 @@ void	ft_rot_and_push(t_arrlist *list, int rot)
 		ft_pa(list);
 }
 
-void	ft_find_bignum(t_arrlist *list)
+void		ft_find_bignum(t_arrlist *list)
 {
 	t_arrlist	*copy_sorted;
 	int			rot;
@@ -130,15 +133,16 @@ void	ft_find_bignum(t_arrlist *list)
 	ft_bubblesort_b(list, copy_sorted);
 	if (copy_sorted == NULL)
 	{
-		ft_printf("ohno its null\n");
+		ft_dprintf(2, "ohno its null\n");
 		return ;
 	}
 	pos = copy_sorted->len_b - 1;
 	if (pos > 1)
-		rot = ft_which_way_b(copy_sorted->arr_b[pos], copy_sorted->arr_b[pos - 1], list);
+		rot = ft_which_way_b(copy_sorted->arr_b[pos],
+		copy_sorted->arr_b[pos - 1], list);
 	else
 		rot = 0;
 	ft_rot_and_push(list, rot);
-	free (copy_sorted);
+	free(copy_sorted);
 	copy_sorted = NULL;
 }

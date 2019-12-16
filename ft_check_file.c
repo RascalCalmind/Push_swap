@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 15:41:29 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 18:07:51 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/12 19:24:24 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ int		ft_open_file(char *file, char *numbers, char **arr, t_fflag_list *flist)
 
 int		ft_check_file(char *file)
 {
-	int		ret;
-	char	*numbers;
-	char	**arr;
+	int				ret;
+	char			*numbers;
+	char			**arr;
 	t_fflag_list	*flist;
 
 	flist = malloc(sizeof(t_fflag_list));
@@ -115,6 +115,5 @@ int		ft_check_file(char *file)
 	free(numbers);
 	free(arr);
 	ft_free_flist(flist);
-	// close(fd);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 16:48:59 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 18:17:24 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/16 15:17:09 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,10 @@ int		ft_allocate_fstore(t_arrlist *arlst, t_fflag_list *flist)
 	len = flist->ret;
 	arlst->arr_a = malloc(sizeof(int) * len + 1);
 	if (!arlst->arr_a)
-	{
-		ft_free_arrlist(arlst);
-		return (-1);
-	}
+		return (ft_free_arrlist(arlst));
 	arlst->arr_b = malloc(sizeof(int) * len + 1);
 	if (!arlst->arr_b)
-	{
-		ft_free_arrlist(arlst);
-		return (-1);
-	}
+		return (ft_free_arrlist(arlst));
 	ft_set_int_array_list(arlst, len);
 	while (len > 0)
 	{
@@ -84,16 +78,10 @@ int		ft_allocate_store(t_arrlist *arlst, char **argv, int len)
 {
 	arlst->arr_a = malloc(sizeof(int) * len + 1);
 	if (!arlst->arr_a)
-	{
-		ft_free_arrlist(arlst);
-		return (-1);
-	}
+		return (ft_free_arrlist(arlst));
 	arlst->arr_b = malloc(sizeof(int) * len + 1);
 	if (!arlst->arr_b)
-	{
-		ft_free_arrlist(arlst);
-		return (-1);
-	}
+		return (ft_free_arrlist(arlst));
 	ft_set_int_array_list(arlst, len);
 	if (arlst->vflag == 1)
 		len++;
@@ -112,14 +100,16 @@ int		ft_allocate_store(t_arrlist *arlst, char **argv, int len)
 
 int		ft_flag_check(char **argv, t_arrlist *arlst, int len)
 {
-	if (ft_strcmp(argv[1], "-v") == 0 || ft_strcmp(argv[1], "-vf") == 0 || ft_strcmp(argv[1], "-fv") == 0)
+	if (ft_strcmp(argv[1], "-v") == 0 || ft_strcmp(argv[1], "-vf") == 0
+	|| ft_strcmp(argv[1], "-fv") == 0)
 	{
 		len--;
 		arlst->vflag = 1;
 	}
 	else
 		arlst->vflag = 0;
-	if (ft_strcmp(argv[1], "-f") == 0 || ft_strcmp(argv[1], "-vf") == 0 || ft_strcmp(argv[1], "-fv") == 0)
+	if (ft_strcmp(argv[1], "-f") == 0 || ft_strcmp(argv[1], "-vf") == 0
+	|| ft_strcmp(argv[1], "-fv") == 0)
 	{
 		arlst->fflag = 1;
 		len--;
@@ -143,33 +133,26 @@ int		ft_store_file(char **argv, t_arrlist *arlst, int len)
 	numbers = malloc(sizeof(char) * 10 + 1);
 	if (len > 2)
 	{
-		ft_free_arrlist(arlst);
 		ft_dprintf(2, "Error\n");
-		return (-1);
+		return (ft_free_arrlist(arlst));
 	}
 	arr = NULL;
 	ret = ft_open_file(argv[2], numbers, arr, flist);
 	if (ret == -1)
 		return (-1);
 	if (flist->arr == NULL)
-		return(-1);
+		return (-1);
 	ft_allocate_fstore(arlst, flist);
 	arlst->len_a = flist->ret;
 	if (ft_find_doubles(arlst) == -1)
 	{
 		ft_free_arrlist(arlst);
-		free (flist->arr);
 		ft_dprintf(2, "Error\n");
-		return (-1);
+		return (ft_free_flist(flist));
 	}
-	// ft_print_stacks(arlst);
 	free(numbers);
-	free(flist->arr);
-	// close(flist->fd);
+	ft_free_flist(flist);
 	return (0);
-	// read file and store array just like ft_check_file and 
-	// write something similar as allocate store to store and
-	// check it in the intiger arr in the list for doubles etc.
 }
 
 int		ft_store_list(char **argv, t_arrlist *arlst, int len)
@@ -181,12 +164,12 @@ int		ft_store_list(char **argv, t_arrlist *arlst, int len)
 		arlst->len_a -= 1;
 	if (ft_find_doubles(arlst) == -1)
 	{
-		ft_free_arrlist(arlst);
 		ft_dprintf(2, "Error\n");
-		return (-1);
+		return (ft_free_arrlist(arlst));
 	}
 	if (arlst->vflag == 1)
-		ft_print_stacks(arlst);
+		ft_stacks_to_buf(arlst);
+		// ft_print_stacks(arlst);
 	return (0);
 }
 

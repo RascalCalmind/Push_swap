@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:41 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 16:25:08 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/16 14:49:26 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		main(int argc, char **argv)
 		}
 		ft_list_copy(arlst, start_list);
 		ret = ft_sort(arlst);
+		ft_printbuffer(arlst->buf);
 		if (arlst->vflag == 1)
 			ft_print_stacks_compare(start_list, arlst);
 		ft_free_arrlist(start_list);

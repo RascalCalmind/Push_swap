@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 18:54:58 by lhageman       #+#    #+#                */
-/*   Updated: 2019/10/07 15:36:50 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/16 15:38:36 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int		ft_read_input(t_arrlist *list)
 	ret = 0;
 	i = 0;
 	str = ft_strnew(3);
+	if (list->buf)
+		ft_printbuffer(list->buf);
 	while (read(STDIN_FILENO, &ch, 1) > 0)
 	{
 		if (ch != '\n')
@@ -74,6 +76,8 @@ int		ft_read_input(t_arrlist *list)
 			i = ft_swap(str, list);
 			ft_strclr(str);
 		}
+		if (list->buf)
+			ft_printbuffer(list->buf);
 	}
 	free(str);
 	return (0);

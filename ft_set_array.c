@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 17:44:42 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 17:12:19 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/16 14:39:25 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 void	ft_set_int_array_list(t_arrlist *list, int len)
 {
 	int i;
+	t_buffer *buf;
 
 	i = 0;
+	buf = malloc(sizeof(t_buffer));
+	if (buf == NULL)
+		return ;
 	while (i < len)
 	{
 		list->arr_a[i] = 0;
@@ -26,9 +30,12 @@ void	ft_set_int_array_list(t_arrlist *list, int len)
 	list->len_a = len;
 	list->len_b = 0;
 	list->prog = 0;
+	buf->fd = 1;
+	buf->count = 0;
+	buf->len = 0;
 }
 
-void	ft_free_arrlist(t_arrlist *list)
+int		ft_free_arrlist(t_arrlist *list)
 {
 	if (list->arr_a)
 	{
@@ -45,6 +52,7 @@ void	ft_free_arrlist(t_arrlist *list)
 		free(list);
 		list = NULL;
 	}
+	return (-1);
 }
 
 void	ft_set_flist(t_fflag_list *list)
@@ -57,8 +65,17 @@ void	ft_set_flist(t_fflag_list *list)
 	list->ret = 0;
 }
 
-void	ft_free_flist(t_fflag_list *list)
+int		ft_free_flist(t_fflag_list *list)
 {
-	free(list->arr);
-	free(list);
+	if (list->arr)
+	{
+		free(list->arr);
+		list->arr = NULL;
+	}
+	if (list)
+	{
+		free(list);
+		list = NULL;
+	}
+	return (-1);
 }

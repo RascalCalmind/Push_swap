@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/23 16:12:32 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 16:22:01 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/12 19:23:12 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	ft_bubble_sorted_a(t_arrlist *list)
 	return (0);
 }
 
-int		ft_middle(t_arrlist *list)
+int			ft_middle(t_arrlist *list)
 {
 	int middle;
 	int number;
@@ -57,7 +57,7 @@ int		ft_middle(t_arrlist *list)
 	return (number);
 }
 
-void	ft_list_copy(t_arrlist *list, t_arrlist *copy)
+void		ft_list_copy(t_arrlist *list, t_arrlist *copy)
 {
 	int i;
 
@@ -80,7 +80,7 @@ void	ft_list_copy(t_arrlist *list, t_arrlist *copy)
 	}
 }
 
-int		ft_bubblesort(t_arrlist *list_og)
+int			ft_bubblesort(t_arrlist *list_og)
 {
 	t_arrlist	*list;
 	int			i;

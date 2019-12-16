@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/03 14:53:45 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 16:25:22 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/16 15:15:12 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ int		ft_pa(t_arrlist *list)
 		list->len_b--;
 		list->len_a++;
 		if (list->prog == 1)
-			ft_printf("pa\n");
+			ft_buffer_add(list->buf, "pa\n");
+			// ft_printf("pa\n");
 		if (list->vflag == 1)
-			ft_print_stacks(list);
+			ft_stacks_to_buf(list);
+			// ft_print_stacks(list);
 	}
 	return (0);
 }
@@ -81,9 +83,11 @@ int		ft_pb(t_arrlist *list)
 		list->len_b++;
 		list->len_a--;
 		if (list->prog == 1)
-			ft_printf("pb\n");
+			ft_buffer_add(list->buf, "pb\n");
+			// ft_printf("pb\n");
 		if (list->vflag == 1)
-			ft_print_stacks(list);
+			ft_stacks_to_buf(list);
+			// ft_print_stacks(list);
 	}
 	return (0);
 }

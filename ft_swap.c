@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 15:52:53 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/10 15:40:00 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/16 15:17:23 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int		ft_sa(t_arrlist *list)
 		list->arr_a[0] = list->arr_a[1];
 		list->arr_a[1] = temp;
 		if (list->prog == 1)
-			ft_printf("sa\n");
+			ft_buffer_add(list->buf, "sa\n");
+			// ft_printf("sa\n");
 		if (list->vflag == 1)
-			ft_print_stacks(list);
+			ft_stacks_to_buf(list);
+			// ft_print_stacks(list);
 	}
 	return (0);
 }
@@ -41,9 +43,11 @@ int		ft_sb(t_arrlist *list)
 		list->arr_b[0] = list->arr_b[1];
 		list->arr_b[1] = temp;
 		if (list->prog == 1)
-			ft_printf("sb\n");
+			ft_buffer_add(list->buf, "sb\n");
+			// ft_printf("sb\n");
 		if (list->vflag == 1)
-			ft_print_stacks(list);
+			ft_stacks_to_buf(list);
+			// ft_print_stacks(list);
 	}
 	return (0);
 }
@@ -58,12 +62,14 @@ int		ft_ss(t_arrlist *list)
 	ft_sb(list);
 	if (list->prog == 2)
 	{
-		ft_printf("ss\n");
+		ft_buffer_add(list->buf, "ss\n");
+		// ft_printf("ss\n");
 		list->prog = 1;
 	}
 	if (list->vflag == 2)
 	{
-		ft_print_stacks(list);
+		ft_stacks_to_buf(list);
+		// ft_print_stacks(list);
 		list->vflag = 1;
 	}
 	return (0);

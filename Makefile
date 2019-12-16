@@ -6,12 +6,12 @@
 #    By: lhageman <lhageman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/26 17:41:45 by lhageman       #+#    #+#                 #
-#    Updated: 2019/12/01 15:47:14 by lhageman      ########   odam.nl          #
+#    Updated: 2019/12/16 14:49:45 by lhageman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAMEC	= checker.a
-NAMEPS	= push_swap.a
+NAMEC	= checker
+NAMEPS	= push_swap
 LIBFT	= libft/libft.a
 NAMES = $(NAMEC) $(NAMEPS)
 
@@ -29,7 +29,8 @@ SRCC	=	ft_checker.c \
 			ft_rotate.c \
 			ft_reverse_rotate.c \
 			ft_check_stack.c \
-			ft_check_file.c
+			ft_check_file.c \
+			ft_buffer.c
 
 SRCPS	=	ft_push_swap.c \
 			ft_valid_input.c \
@@ -46,7 +47,8 @@ SRCPS	=	ft_push_swap.c \
 			ft_sort_bigger.c \
 			ft_sort_back.c \
 			ft_check_file.c \
-			ft_find_bignum.c
+			ft_find_bignum.c \
+			ft_buffer.c
 
 OBJC	= $(SRCC:%.c=%.o)
 OBJPS	= $(SRCPS:%.c=%.o)

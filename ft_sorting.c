@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 13:45:02 by lhageman       #+#    #+#                */
-/*   Updated: 2019/11/20 13:14:08 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/12 19:28:27 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,4 @@ void		ft_sorter(t_arrlist *list, int middle)
 		}
 		middle = 0;
 	}
-	
 }
