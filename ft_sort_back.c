@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 21:39:17 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 16:25:41 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/18 13:02:50 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_which_s(t_arrlist *list)
 		ft_sb(list);
 }
 
-int	ft_rot_and_swap(t_arrlist *list, int j)
+int		ft_rot_and_swap(t_arrlist *list, int j)
 {
 	ft_ra(list);
 	ft_which_s(list);
@@ -36,7 +36,7 @@ int		ft_rrot_and_swap(t_arrlist *list, int k)
 	return (k - 1);
 }
 
-void ft_resort(t_arrlist *list)
+void	ft_resort(t_arrlist *list)
 {
 	int i;
 	int j;
@@ -63,7 +63,7 @@ void ft_resort(t_arrlist *list)
 	}
 }
 
-int	ft_sort_back(t_arrlist *list)
+int		ft_sort_back(t_arrlist *list)
 {
 	int ret;
 	int a_sort;

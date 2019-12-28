@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 17:43:47 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 16:26:12 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/28 14:22:08 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ int		ft_sort_bigger(t_arrlist *list, int middle)
 	int ret;
 	int sort_a;
 
+	ft_print_stacks(list);
 	ret = ft_sorted(list);
 	sort_a = ft_a_sorted(list);
 	while (ret != 0 && sort_a != 0)
@@ -168,6 +169,6 @@ int		ft_sort_bigger(t_arrlist *list, int middle)
 		ft_sort_back(list);
 	ret = ft_sorted(list);
 	if (ret != 0)
-		ft_printf("I Seem to have a lot of trouble sorting this shitty list you gave me\n");
+		ft_printf("oh no cant sort this :(\n");
 	return (0);
 }

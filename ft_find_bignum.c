@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/30 15:28:44 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/16 14:34:58 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/28 16:31:56 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,8 @@ void		ft_find_bignum(t_arrlist *list)
 	ft_bubblesort_b(list, copy_sorted);
 	if (copy_sorted == NULL)
 	{
-		ft_dprintf(2, "ohno its null\n");
+		ft_free_arrlist(list);
+		ft_dprintf(2, "Error\n");
 		return ;
 	}
 	pos = copy_sorted->len_b - 1;

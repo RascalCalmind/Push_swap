@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 15:52:53 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/16 15:17:23 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/28 14:23:10 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@ int		ft_sa(t_arrlist *list)
 		list->arr_a[1] = temp;
 		if (list->prog == 1)
 			ft_buffer_add(list->buf, "sa\n");
-			// ft_printf("sa\n");
 		if (list->vflag == 1)
 			ft_stacks_to_buf(list);
-			// ft_print_stacks(list);
 	}
 	return (0);
 }
@@ -44,10 +42,8 @@ int		ft_sb(t_arrlist *list)
 		list->arr_b[1] = temp;
 		if (list->prog == 1)
 			ft_buffer_add(list->buf, "sb\n");
-			// ft_printf("sb\n");
 		if (list->vflag == 1)
 			ft_stacks_to_buf(list);
-			// ft_print_stacks(list);
 	}
 	return (0);
 }
@@ -63,13 +59,11 @@ int		ft_ss(t_arrlist *list)
 	if (list->prog == 2)
 	{
 		ft_buffer_add(list->buf, "ss\n");
-		// ft_printf("ss\n");
 		list->prog = 1;
 	}
 	if (list->vflag == 2)
 	{
 		ft_stacks_to_buf(list);
-		// ft_print_stacks(list);
 		list->vflag = 1;
 	}
 	return (0);

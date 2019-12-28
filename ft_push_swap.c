@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:41 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/16 14:49:26 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/28 14:14:27 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,15 @@ int		main(int argc, char **argv)
 		if (!start_list)
 		{
 			ft_free_arrlist(arlst);
+			return (-1);
 		}
 		ft_list_copy(arlst, start_list);
 		ret = ft_sort(arlst);
+		arlst->buf->str = NULL;
 		ft_printbuffer(arlst->buf);
 		if (arlst->vflag == 1)
 			ft_print_stacks_compare(start_list, arlst);
+		ft_printf("\nAmount of calculations: %i\n\n", arlst->buf->count);
 		ft_free_arrlist(start_list);
 		ft_free_arrlist(arlst);
 	}

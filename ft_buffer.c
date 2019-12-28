@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/16 14:20:54 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/16 14:48:52 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/28 14:11:49 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ void	ft_buffer_to_string(t_buffer *buf)
 void	ft_printbuffer(t_buffer *buf)
 {
 	if (buf->str == NULL)
-		write(buf->fd, &buf->buf, buf->len);
+		write(1, &buf->buf, buf->len);
 	else
 		ft_buffer_to_string(buf);
-	buf->count += (size_t)buf->len;
 	buf->len = 0;
 }
 
@@ -50,9 +49,17 @@ void	ft_string_to_buffer(t_buffer *buf, char *str, size_t len)
 		str++;
 		len--;
 	}
+	buf->str = NULL;
 }
 
 void	ft_buffer_add(t_buffer *buf, char *str)
+{
+	ft_string_to_buffer(buf, str, ft_strlen(str));
+	if (ft_strlen(str) <= 4)
+		buf->count += 1;
+}
+
+void	ft_buffer_add_stack(t_buffer *buf, char *str)
 {
 	ft_string_to_buffer(buf, str, ft_strlen(str));
 }
