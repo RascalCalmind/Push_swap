@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:33 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/28 14:16:38 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/28 16:42:03 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int		main(int argc, char **argv)
 			return (-1);
 		if (ft_store_input(argv, arlst) == -1)
 			return (-1);
+		if (arlst->fflag == 1 || (arlst->vflag == 0 && arlst->fflag == 0))
+			ft_print_stacks(arlst);
 		ret = ft_read_input(arlst);
 		if (ret == -1)
 		{
