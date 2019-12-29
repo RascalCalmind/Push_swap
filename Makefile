@@ -6,7 +6,7 @@
 #    By: lhageman <lhageman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/26 17:41:45 by lhageman       #+#    #+#                 #
-#    Updated: 2019/12/16 14:49:45 by lhageman      ########   odam.nl          #
+#    Updated: 2019/12/29 18:34:54 by lhageman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ SRCC	=	ft_checker.c \
 			ft_reverse_rotate.c \
 			ft_check_stack.c \
 			ft_check_file.c \
-			ft_buffer.c
+			ft_buffer.c \
+			ft_print_buffer.c \
+			ft_store_file.c \
 
 SRCPS	=	ft_push_swap.c \
 			ft_valid_input.c \
@@ -48,7 +50,11 @@ SRCPS	=	ft_push_swap.c \
 			ft_sort_back.c \
 			ft_check_file.c \
 			ft_find_bignum.c \
-			ft_buffer.c
+			ft_buffer.c \
+			ft_print_buffer.c \
+			ft_sort_rotate_big.c \
+			ft_store_file.c \
+			ft_find_b.c
 
 OBJC	= $(SRCC:%.c=%.o)
 OBJPS	= $(SRCPS:%.c=%.o)

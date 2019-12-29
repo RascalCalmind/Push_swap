@@ -6,13 +6,30 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:41 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/28 14:14:27 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/29 17:32:43 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker.h"
 #include "ft_push_swap.h"
 #include <stdio.h>
+
+void	ft_finish_up(t_arrlist *arlst, t_arrlist *start_list)
+{
+	arlst->buf->str = NULL;
+	ft_printbuffer(arlst->buf);
+	if (arlst->vflag == 1)
+		ft_print_stacks_compare(start_list, arlst);
+	ft_printf("\nAmount of calculations: %i\n\n", arlst->buf->count);
+	ft_free_arrlist(start_list);
+	ft_free_arrlist(arlst);
+}
+
+int		ft_quick_free_error(t_arrlist *arlst)
+{
+	ft_free_arrlist(arlst);
+	return (-1);
+}
 
 int		main(int argc, char **argv)
 {
@@ -34,19 +51,10 @@ int		main(int argc, char **argv)
 			return (-1);
 		start_list = malloc(sizeof(t_arrlist));
 		if (!start_list)
-		{
-			ft_free_arrlist(arlst);
-			return (-1);
-		}
+			return (ft_quick_free_error(arlst));
 		ft_list_copy(arlst, start_list);
 		ret = ft_sort(arlst);
-		arlst->buf->str = NULL;
-		ft_printbuffer(arlst->buf);
-		if (arlst->vflag == 1)
-			ft_print_stacks_compare(start_list, arlst);
-		ft_printf("\nAmount of calculations: %i\n\n", arlst->buf->count);
-		ft_free_arrlist(start_list);
-		ft_free_arrlist(arlst);
+		ft_finish_up(arlst, start_list);
 	}
 	return (0);
 }

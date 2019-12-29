@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 18:54:58 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/18 16:16:39 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/29 18:49:51 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,52 @@ int		ft_check_swap(char *str, int i)
 	return (-1);
 }
 
+int		ft_strcheck(char *str, t_arrlist *list, int i, int ret)
+{
+	if (str[0] == '\0')
+	{
+		free(str);
+		return (0);
+	}
+	ret = ft_check_swap(str, i);
+	if (ret == -1)
+	{
+		free(str);
+		return (-1);
+	}
+	i = ft_swap(str, list);
+	if (i != 0)
+		return (i);
+	ft_strclr(str);
+	return (1);
+}
+
+int		ft_read_loop(char ch, char *str, int i, t_arrlist *list)
+{
+	int ret;
+
+	ret = 0;
+	if (ch != '\n')
+	{
+		if (i > 2 || i == -1)
+			return (-1);
+		str[i] = ch;
+		i++;
+	}
+	if (ch == '\n')
+	{
+		ret = ft_strcheck(str, list, i, ret);
+		if (ret == -1)
+			return (-1);
+		if (ret == 0)
+			return (0);
+		i = 0;
+	}
+	if (list->buf)
+		ft_printbuffer(list->buf);
+	return (1);
+}
+
 int		ft_read_input(t_arrlist *list)
 {
 	char	ch;
@@ -49,35 +95,13 @@ int		ft_read_input(t_arrlist *list)
 	ret = 0;
 	i = 0;
 	str = ft_strnew(3);
-	if (list->buf)
-		ft_printbuffer(list->buf);
 	while (read(STDIN_FILENO, &ch, 1) > 0)
 	{
-		if (ch != '\n')
-		{
-			if (i > 2 || i == -1)
-				return (-1);
-			str[i] = ch;
-			i++;
-		}
-		if (ch == '\n')
-		{
-			if (str[0] == '\0')
-			{
-				free(str);
-				return (0);
-			}
-			ret = ft_check_swap(str, i);
-			if (ret == -1)
-			{
-				free(str);
-				return (-1);
-			}
-			i = ft_swap(str, list);
-			ft_strclr(str);
-		}
-		if (list->buf)
-			ft_printbuffer(list->buf);
+		ret = ft_read_loop(ch, str, i, list);
+		if (ret == -1)
+			return (-1);
+		if (ret == 0)
+			return (0);
 	}
 	free(str);
 	return (0);

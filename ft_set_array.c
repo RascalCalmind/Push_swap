@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 17:44:42 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/28 14:20:07 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/29 17:36:40 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,6 @@ int		ft_free_arrlist(t_arrlist *list)
 	{
 		free(list->arr_b);
 		list->arr_b = NULL;
-	}
-	if (list->buf)
-	{
-		free(list->buf);
-		list->buf = NULL;
 	}
 	if (list)
 	{

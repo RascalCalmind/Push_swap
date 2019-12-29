@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:38 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/18 13:25:40 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/29 18:44:38 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,11 @@ void				ft_printbuffer(t_buffer *buf);
 void				ft_buffer_add(t_buffer *buf, char *str);
 void				ft_stacks_to_buf(t_arrlist *list);
 void				ft_buffer_add_stack(t_buffer *buf, char *str);
+int					ft_len_stack(int len_a, int len_b);
+void				ft_string_to_buffer(t_buffer *buf, char *str, size_t len);
+
+int					ft_find_doubles(t_arrlist *list);
+int					ft_store_int(char *str);
+int					ft_store_file(char **argv, t_arrlist *arlst, int len);
 
 #endif

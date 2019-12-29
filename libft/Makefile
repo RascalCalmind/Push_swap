@@ -6,7 +6,7 @@
 #    By: lhageman <lhageman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/07/24 22:50:24 by lhageman       #+#    #+#                 #
-#    Updated: 2019/11/22 16:53:09 by lhageman      ########   odam.nl          #
+#    Updated: 2019/12/29 15:00:29 by lhageman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,9 @@ SRCC =	ft_itoa.c \
 	ft_memalloc.c \
 	ft_memcpy.c \
 	ft_strjoin.c \
-	ft_strchr.c
+	ft_strchr.c \
+	ft_char_arr_len.c \
+	ft_int_arr_len.c
 
 SRCO	= $(SRCC:%.c=%.o)
 TRASH	= $(SRCC:%.c=%.c~)

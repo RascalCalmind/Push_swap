@@ -6,7 +6,7 @@
 /*   By: lhageman <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/07/24 22:17:20 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 19:22:07 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/29 15:00:15 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char				*ft_strnjoin(const char *s1, const char *s2, int len1,
 					int len2);
 
 size_t				ft_strlen(const char *s);
+int					ft_chararrlen(char **arr);
+int					ft_intarrlen(int *arr);
 
 int					ft_isspace(char c);
 int					ft_isdigit(int c);

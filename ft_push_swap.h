@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:43 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 19:25:43 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/29 18:36:23 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,10 @@ void	ft_print_int_array(int *arr);
 int		ft_check_file(char *file);
 void	ft_list_copy(t_arrlist *list, t_arrlist *copy);
 void	ft_find_bignum(t_arrlist *list);
+int		ft_middles(t_arrlist *list, int middle);
+int		ft_which_way(t_arrlist *list, int middle, int max);
+int		ft_which_rotate(t_arrlist *list, int turn);
+int		ft_swap_two_b(t_arrlist *list, int i, int j);
+int		ft_bubble_sorted_b(t_arrlist *list);
 
 #endif

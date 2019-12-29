@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 15:41:29 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/12 19:24:24 by lhageman      ########   odam.nl         */
+/*   Updated: 2019/12/29 17:39:20 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_push_swap.h"
 #include <fcntl.h>
 
-int		ft_copy_arr_to_flist(char **arr, t_fflag_list *flist)
+int			ft_copy_arr_to_flist(char **arr, t_fflag_list *flist)
 {
 	int i;
 
@@ -32,7 +32,7 @@ int		ft_copy_arr_to_flist(char **arr, t_fflag_list *flist)
 	return (-1);
 }
 
-int		ft_make_array(char *str, char **arr, t_fflag_list *flist)
+int			ft_make_array(char *str, char **arr, t_fflag_list *flist)
 {
 	int i;
 
@@ -58,7 +58,16 @@ int		ft_make_array(char *str, char **arr, t_fflag_list *flist)
 	return (i);
 }
 
-int		ft_open_file(char *file, char *numbers, char **arr, t_fflag_list *flist)
+static int	ft_quick_error(char *str, int fd)
+{
+	free(str);
+	close(fd);
+	ft_dprintf(2, "Error\n");
+	return (-1);
+}
+
+int			ft_open_file(char *file, char *numbers, char **arr,\
+t_fflag_list *flist)
 {
 	int ret;
 	int fd;
@@ -72,26 +81,16 @@ int		ft_open_file(char *file, char *numbers, char **arr, t_fflag_list *flist)
 	}
 	ret = get_next_line(fd, &numbers);
 	if (ret <= 0)
-	{
-		free(numbers);
-		close(fd);
-		ft_dprintf(2, "Error\n");
-		return (-1);
-	}
+		return (ft_quick_error(numbers, fd));
 	ret = ft_make_array(numbers, arr, flist);
 	if (ret == -1)
-	{
-		free(numbers);
-		close(fd);
-		ft_dprintf(2, "Error\n");
-		return (-1);
-	}
+		return (ft_quick_error(numbers, fd));
 	flist->fd = fd;
 	close(fd);
 	return (ret);
 }
 
-int		ft_check_file(char *file)
+int			ft_check_file(char *file)
 {
 	int				ret;
 	char			*numbers;
