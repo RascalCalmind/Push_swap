@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:38 by lhageman       #+#    #+#                */
-/*   Updated: 2020/01/02 17:01:25 by lhageman      ########   odam.nl         */
+/*   Updated: 2020/01/02 20:20:27 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@ typedef struct		s_fflag_list
 	char	**arr;
 }					t_fflag_list;
 
+typedef struct		s_read_check
+{
+	char	ch;
+	char	*str;
+	int		ret;
+	int		i;
+}					t_read_check;
+
 int					ft_valid_input(char *str);
 int					ft_check_input(char **argv);
 int					ft_store_input(char **argv, t_arrlist *arlst);
@@ -67,6 +75,8 @@ int					ft_open_file(char *file, char *numbers, char **arr,
 void				ft_set_flist(t_fflag_list *list);
 int					ft_free_flist(t_fflag_list *list);
 void				ft_free_str(char *str);
+int					ft_free_check(t_read_check *rc, int i);
+int					ft_quick_error_return(void);
 
 void				ft_printbuffer(t_buffer *buf);
 void				ft_buffer_add(t_buffer *buf, char *str);

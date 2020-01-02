@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/10 17:43:47 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/29 17:16:31 by lhageman      ########   odam.nl         */
+/*   Updated: 2020/01/02 20:20:45 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ int			ft_sort_bigger(t_arrlist *list, int middle)
 		ft_sort_back(list);
 	ret = ft_sorted(list);
 	if (ret != 0)
-		ft_dprintf(2, "Error\n");
+		return (ft_quick_error_return());
 	return (0);
 }

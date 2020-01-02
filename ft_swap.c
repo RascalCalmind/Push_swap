@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 15:52:53 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/28 14:23:10 by lhageman      ########   odam.nl         */
+/*   Updated: 2020/01/02 20:16:34 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_sa(t_arrlist *list)
 	int temp;
 
 	temp = 0;
-	if (list->len_a > 1 && list->arr_a[0] > list->arr_a[1])
+	if (list->len_a > 1)
 	{
 		temp = list->arr_a[0];
 		list->arr_a[0] = list->arr_a[1];

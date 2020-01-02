@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/03 14:53:45 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/28 14:17:01 by lhageman      ########   odam.nl         */
+/*   Updated: 2020/01/02 20:19:33 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		ft_pb(t_arrlist *list)
 	int i;
 
 	i = 1;
-	if (list->len_a > 1)
+	if (list->len_a > 0)
 	{
 		if (list->len_b < 1)
 		{

@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 15:41:29 by lhageman       #+#    #+#                */
-/*   Updated: 2020/01/02 17:09:29 by lhageman      ########   odam.nl         */
+/*   Updated: 2020/01/02 20:20:16 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,13 @@ int			ft_make_array(char *str, char **arr, t_fflag_list *flist)
 	arr = ft_strsplit(str, ' ');
 	free(str);
 	if (!arr)
-	{
-		ft_dprintf(2, "Error\n");
-		return (-1);
-	}
+		return (ft_quick_error_return());
 	while (arr[i])
 	{
 		if (ft_valid_input(arr[i]) == -1)
 		{
 			free(arr);
-			ft_dprintf(2, "Error\n");
-			return (-1);
+			return (ft_quick_error_return());
 		}
 		i++;
 	}
@@ -45,8 +41,7 @@ static int	ft_quick_error(char *str, int fd)
 {
 	free(str);
 	close(fd);
-	ft_dprintf(2, "Error\n");
-	return (-1);
+	return (ft_quick_error_return());
 }
 
 int			ft_open_file(char *file, char *numbers, char **arr,\
@@ -58,10 +53,7 @@ t_fflag_list *flist)
 	ret = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_dprintf(2, "Error\n");
-		return (-1);
-	}
+		return (ft_quick_error_return());
 	ret = get_next_line(fd, &numbers);
 	if (ret <= 0)
 		return (ft_quick_error(numbers, fd));
@@ -86,10 +78,7 @@ int			ft_check_file(char *file)
 		return (-1);
 	numbers = malloc(sizeof(char) * 10 + 1);
 	if (!numbers)
-	{
-		ft_dprintf(2, "Error\n");
-		return (-1);
-	}
+		return (ft_quick_error_return());
 	arr = NULL;
 	ret = ft_open_file(file, numbers, arr, flist);
 	if (ret == -1)
