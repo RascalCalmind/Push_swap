@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:38 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/29 18:44:38 by lhageman      ########   odam.nl         */
+/*   Updated: 2020/01/02 17:01:25 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int					ft_open_file(char *file, char *numbers, char **arr,
 					t_fflag_list *flist);
 void				ft_set_flist(t_fflag_list *list);
 int					ft_free_flist(t_fflag_list *list);
+void				ft_free_str(char *str);
 
 void				ft_printbuffer(t_buffer *buf);
 void				ft_buffer_add(t_buffer *buf, char *str);

@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/26 17:41:41 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/29 17:32:43 by lhageman      ########   odam.nl         */
+/*   Updated: 2020/01/02 17:10:33 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ void	ft_finish_up(t_arrlist *arlst, t_arrlist *start_list)
 	if (arlst->vflag == 1)
 		ft_print_stacks_compare(start_list, arlst);
 	ft_printf("\nAmount of calculations: %i\n\n", arlst->buf->count);
+	if (arlst->buf)
+	{
+		free(arlst->buf);
+	}
 	ft_free_arrlist(start_list);
 	ft_free_arrlist(arlst);
 }

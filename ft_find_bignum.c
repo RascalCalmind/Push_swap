@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/30 15:28:44 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/29 18:34:11 by lhageman      ########   odam.nl         */
+/*   Updated: 2020/01/02 17:11:15 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,5 @@ void		ft_find_bignum(t_arrlist *list)
 	else
 		rot = 0;
 	ft_rot_and_push(list, rot);
-	free(copy_sorted);
-	copy_sorted = NULL;
+	ft_free_arrlist(copy_sorted);
 }

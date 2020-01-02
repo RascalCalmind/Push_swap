@@ -6,29 +6,25 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/29 15:01:40 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/29 15:07:30 by lhageman      ########   odam.nl         */
+/*   Updated: 2020/01/02 17:05:18 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 #include "ft_checker.h"
 
-void		ft_buf_stacks_2(t_arrlist *list, int num, int i)
+void		ft_buf_stacks_3(t_arrlist *list, int num, int i)
 {
 	char *str;
+	char *number;
 
 	str = "-----------------------------------------------\n";
-	if (num == 3)
-	{
-		ft_printf("|\t%i\t|\n", list->arr_a[i]);
-		ft_buffer_add_stack(list->buf, "|\t");
-		ft_buffer_add_stack(list->buf, ft_itoa(list->arr_a[i]));
-		ft_buffer_add_stack(list->buf, "\t|");
-	}
 	if (num == 4)
 	{
 		ft_buffer_add_stack(list->buf, "|\t\t\t|\t");
-		ft_buffer_add_stack(list->buf, ft_itoa(list->arr_b[i]));
+		number = ft_itoa(list->arr_b[i]);
+		ft_buffer_add_stack(list->buf, number);
+		ft_free_str(number);
 	}
 	if (num == 5)
 	{
@@ -40,27 +36,55 @@ void		ft_buf_stacks_2(t_arrlist *list, int num, int i)
 	ft_buffer_add_stack(list->buf, "\n");
 }
 
+void		ft_buf_stacks_2(t_arrlist *list, int num, int i)
+{
+	char *number;
+
+	if (num == 2)
+	{
+		ft_buffer_add_stack(list->buf, "|\t");
+		number = ft_itoa(list->arr_a[i]);
+		ft_buffer_add_stack(list->buf, number);
+		ft_free_str(number);
+		ft_buffer_add_stack(list->buf, "\t\t|");
+	}
+	if (num == 3)
+	{
+		ft_printf("|\t%i\t|\n", list->arr_a[i]);
+		ft_buffer_add_stack(list->buf, "|\t");
+		number = ft_itoa(list->arr_a[i]);
+		ft_buffer_add_stack(list->buf, number);
+		ft_free_str(number);
+		ft_buffer_add_stack(list->buf, "\t|");
+	}
+	ft_buf_stacks_3(list, num, i);
+}
+
 void		ft_buf_stacks(t_arrlist *list, int num, int i)
 {
+	char *number;
+
 	if (num == 0)
 	{
 		ft_buffer_add_stack(list->buf, "|\t");
-		ft_buffer_add_stack(list->buf, ft_itoa(list->arr_a[i]));
+		number = ft_itoa(list->arr_a[i]);
+		ft_buffer_add_stack(list->buf, number);
+		ft_free_str(number);
 		ft_buffer_add_stack(list->buf, "\t\t|\t");
-		ft_buffer_add_stack(list->buf, ft_itoa(list->arr_b[i]));
+		number = ft_itoa(list->arr_b[i]);
+		ft_buffer_add_stack(list->buf, number);
+		ft_free_str(number);
 	}
 	if (num == 1)
 	{
 		ft_buffer_add_stack(list->buf, "|\t");
-		ft_buffer_add_stack(list->buf, ft_itoa(list->arr_a[i]));
+		number = ft_itoa(list->arr_a[i]);
+		ft_buffer_add_stack(list->buf, number);
+		ft_free_str(number);
 		ft_buffer_add_stack(list->buf, "\t|\t");
-		ft_buffer_add_stack(list->buf, ft_itoa(list->arr_b[i]));
-	}
-	if (num == 2)
-	{
-		ft_buffer_add_stack(list->buf, "|\t");
-		ft_buffer_add_stack(list->buf, ft_itoa(list->arr_a[i]));
-		ft_buffer_add_stack(list->buf, "\t\t|");
+		number = ft_itoa(list->arr_b[i]);
+		ft_buffer_add_stack(list->buf, number);
+		ft_free_str(number);
 	}
 	ft_buf_stacks_2(list, num, i);
 }

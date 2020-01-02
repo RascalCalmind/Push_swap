@@ -6,7 +6,7 @@
 /*   By: lhageman <lhageman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/02 17:44:42 by lhageman       #+#    #+#                */
-/*   Updated: 2019/12/29 17:36:40 by lhageman      ########   odam.nl         */
+/*   Updated: 2020/01/02 17:01:03 by lhageman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,15 @@ void	ft_set_flist(t_fflag_list *list)
 
 int		ft_free_flist(t_fflag_list *list)
 {
+	int i;
+
+	i = 0;
+	while (list->arr[i])
+	{
+		free(list->arr[i]);
+		list->arr[i] = NULL;
+		i += 1;
+	}
 	if (list->arr)
 	{
 		free(list->arr);
@@ -80,4 +89,13 @@ int		ft_free_flist(t_fflag_list *list)
 		list = NULL;
 	}
 	return (-1);
+}
+
+void	ft_free_str(char *str)
+{
+	if (str)
+	{
+		free(str);
+		str = NULL;
+	}
 }
